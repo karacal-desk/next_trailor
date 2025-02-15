@@ -1,101 +1,190 @@
-import Image from "next/image";
+import HeroSection from "@/components/HeroSection";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle } from "lucide-react";
+import React from "react";
 
-export default function Home() {
+const page = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="flex-grow">
+      <HeroSection />
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-12 text-center text-primary">
+            Why Choose ASHAA? The Best Dress Design School
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Expert Instructors",
+                description:
+                  "Learn from industry professionals with years of experience",
+              },
+              {
+                title: "Hands-on Training",
+                description:
+                  "Get practical experience with state-of-the-art equipment",
+              },
+              {
+                title: "Industry Connections",
+                description:
+                  "Network with fashion houses and potential employers",
+              },
+              {
+                title: "Flexible Schedule",
+                description:
+                  "Choose from day and evening classes to fit your lifestyle",
+              },
+              {
+                title: "Career Support",
+                description:
+                  "Receive guidance on job placements and entrepreneurship",
+              },
+              {
+                title: "Recognized Certification",
+                description:
+                  "Earn certificates recognized by the fashion industry",
+              },
+            ].map((item, index) => (
+              <Card
+                key={index}
+                className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
+                <CardHeader>
+                  <CardTitle className="flex items-center text-primary">
+                    <CheckCircle className="w-6 h-6 mr-2" />
+                    {item.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section className="py-20 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-12 text-center text-primary">
+            Tools and Accessories Provided
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[
+              "Sewing Machine",
+              "Scissors",
+              "Measuring Tape",
+              "Fabric Chalk",
+              "Pins and Needles",
+              "Thimble",
+              "Iron",
+              "Mannequin",
+            ].map((tool) => (
+              <div
+                key={tool}
+                className="bg-white p-6 rounded-lg shadow-md text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              >
+                <h3 className="font-semibold text-lg mb-2 text-primary">
+                  {tool}
+                </h3>
+                <p className="text-gray-600">Essential for your training</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-12 text-center text-primary">
+            Our Courses
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Basic Tailoring Course",
+                duration: "6 months",
+                fee: "₹2000/month",
+              },
+              {
+                name: "Basic Embroidery Course",
+                duration: "3 months",
+                fee: "₹1500/month",
+              },
+              {
+                name: "Diploma in Tailoring and Dress Designing",
+                duration: "1 year",
+                fee: "₹25000/year",
+              },
+              {
+                name: "Short-term Fun Courses",
+                duration: "3 months",
+                fee: "₹1800/month",
+              },
+              {
+                name: "Recycle & Reuse Old Clothes",
+                duration: "3 months",
+                fee: "₹1700/month",
+              },
+            ].map((course, index) => (
+              <Card
+                key={index}
+                className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
+                <CardHeader>
+                  <CardTitle className="text-primary">{course.name}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    <strong>Duration:</strong> {course.duration}
+                  </p>
+                  <p>
+                    <strong>Fee:</strong> {course.fee}
+                  </p>
+                  <Button className="mt-4 w-full">Enroll Now</Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gray-100">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-12 text-primary">
+            Launch Your Fashion Career
+          </h2>
+          <p className="text-xl mb-12 max-w-3xl mx-auto">
+            Start your professional journey in the fashion industry after
+            completing any of our courses. The possibilities are endless!
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "Open your own boutique", icon: "🏪" },
+              { title: "Become a fashion designer", icon: "👗" },
+              { title: "Work with leading brands", icon: "🏢" },
+              { title: "Offer alteration services", icon: "🧵" },
+              { title: "Teach fashion and design", icon: "👩‍🏫" },
+              { title: "Start an online clothing store", icon: "🛍️" },
+            ].map((opportunity, index) => (
+              <Card
+                key={index}
+                className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
+                <CardContent className="flex flex-col items-center justify-center h-full p-6">
+                  <span className="text-4xl mb-4">{opportunity.icon}</span>
+                  <h3 className="font-semibold text-lg text-primary">
+                    {opportunity.title}
+                  </h3>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
-}
+};
+
+export default page;
