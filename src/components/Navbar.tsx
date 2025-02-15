@@ -23,7 +23,7 @@ export default function Navbar() {
               <DropdownMenuContent>
                 <DropdownMenuItem>Tailoring Courses</DropdownMenuItem>
                 <DropdownMenuItem>Dress Designing Courses</DropdownMenuItem>
-                <DropdownMenuItem>Student's Creation</DropdownMenuItem>
+                <DropdownMenuItem>Student&apos;s Creation</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             <DropdownMenu>
