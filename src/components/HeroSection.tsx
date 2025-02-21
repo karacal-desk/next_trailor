@@ -53,9 +53,9 @@ const HeroSection = () => {
       className="relative h-screen py-20 overflow-hidden bg-black"
       id="home"
     >
-      <div className="container mx-auto px-4 h-full flex items-center">
-        <div className="w-full lg:w-1/2 z-10">
-          <h1 className="text-5xl font-bold mb-6 text-white">
+      <div className="container mx-auto px-4 h-full flex items-center ">
+        <div className="w-full lg:w-1/2 z-10 bg-black/30 rounded-sm p-2">
+          <h1 className="text-5xl font-bold mb-6 text-white ">
             Welcome to the Future of Design
           </h1>
           <p className="text-xl mb-8 text-gray-400">
