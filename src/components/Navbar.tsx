@@ -9,13 +9,13 @@ import {
 
 export default function Navbar() {
   return (
-    <nav className="bg-white fixed z-10  w-full rounded-md  shadow-md">
+    <nav className="bg-[#221F39] text-[#F0C38E]  fixed z-10  w-full shadow-lg">
       <div className="container mx-auto px-2">
         <div className="flex justify-between  items-center h-20">
-          <Link href="/" className="font-bold text-2xl text-primary">
+          <Link href="/" className="font-bold text-2xl ">
             ASHAA
           </Link>
-          <div className="flex space-x-0 md:space-x-4">
+          <div className="flex space-x-0 md:space-x-4 font-sans text-2xl">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost">Menu</Button>

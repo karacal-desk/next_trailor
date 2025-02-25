@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <div className="bg-black/30">
-      <div className="container mt-10 px-4 py-12 md:py-24">
+    <div className="bg-black/30 ">
+      <div className="container mt-10 px-4 py-12 md:py-24 font-sans">
         <div className="grid  items-center gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex bg-black/60 p-10 rounded-lg flex-col space-y-4 text-center md:text-left">
             <h1 className="text-3xl  text-white font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
@@ -17,16 +17,16 @@ const HeroSection = () => {
               Transform your passion into a successful career with our
               comprehensive courses.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
+            <div className="flex flex-col gap-3  sm:flex-row sm:justify-center md:justify-start">
               <Button
-                className="bg-[#F0C38E] text-white hover:bg-[#F0C38E]/90"
+                className="bg-[#F0C38E] text-white hover:bg-[#F0C38E]/90 font-semibold"
                 size="lg"
               >
                 Start Learning
               </Button>
               <Button
                 variant="outline"
-                className="border-[#9370DB] text-[#9370DB] hover:bg-[#9370DB]/10 hover:text-white"
+                className="border-[#9370DB] text-[#9370DB] hover:bg-[#9370DB]/10 hover:text-white font-semibold"
                 size="lg"
               >
                 Explore Courses

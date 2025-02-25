@@ -6,8 +6,8 @@ const Background = () => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1920"
-        height="1080"
-        viewBox="0 0 1600 800"
+        height="1180"
+        viewBox="0 0 1600 850"
       >
         <rect fill="#312C51" width="1600" height="800" />
         <path
