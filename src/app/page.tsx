@@ -1,4 +1,4 @@
-import HeroSection from "@/components/HeroSection";
+import HeroSection from "@/components/HeroSection.mod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
@@ -8,9 +8,9 @@ const page = () => {
   return (
     <main className="flex-grow">
       <HeroSection />
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-black/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center text-primary">
+          <h2 className="text-4xl font-bold mb-12 text-center text-white">
             Why Choose ASHAA? The Best Dress Design School
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -65,9 +65,9 @@ const page = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-100">
+      <section className="py-20 bg-black/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center text-primary">
+          <h2 className="text-4xl font-bold mb-12 text-center text-white">
             Tools and Accessories Provided
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -95,9 +95,9 @@ const page = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-black/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center text-primary">
+          <h2 className="text-4xl font-bold mb-12 text-center text-white">
             Our Courses
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -150,12 +150,12 @@ const page = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-100">
+      <section className="py-20 bg-black/30">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-12 text-primary">
+          <h2 className="text-4xl font-bold mb-12 text-white">
             Launch Your Fashion Career
           </h2>
-          <p className="text-xl mb-12 max-w-3xl mx-auto">
+          <p className="text-xl text-white mb-12 max-w-3xl mx-auto">
             Start your professional journey in the fashion industry after
             completing any of our courses. The possibilities are endless!
           </p>

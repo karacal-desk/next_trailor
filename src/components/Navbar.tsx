@@ -9,8 +9,8 @@ import {
 
 export default function Navbar() {
   return (
-    <nav className="bg-white shadow-md">
-      <div className="container mx-auto px-4">
+    <nav className="bg-white fixed z-10  w-full rounded-md  shadow-md">
+      <div className="container mx-auto px-2">
         <div className="flex justify-between  items-center h-20">
           <Link href="/" className="font-bold text-2xl text-primary">
             ASHAA
@@ -61,7 +61,6 @@ export default function Navbar() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button variant="default">Sign In</Button>
           </div>
         </div>
       </div>

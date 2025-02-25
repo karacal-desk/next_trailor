@@ -54,7 +54,7 @@ const HeroSection = () => {
       id="home"
     >
       <div className="container mx-auto px-4 h-full flex items-center ">
-        <div className="w-full lg:w-1/2 z-10 bg-black/30 rounded-sm p-2">
+        <div className="w-full lg:w-1/2 z-50 bg-black/30 rounded-sm p-2">
           <h1 className="text-5xl font-bold mb-6 text-white ">
             Welcome to the Future of Design
           </h1>
