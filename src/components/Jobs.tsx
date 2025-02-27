@@ -52,8 +52,9 @@ const Jobs = () => {
                   <Image
                     src={opportunity.icon || "/placeholder.svg"}
                     alt={opportunity.title}
-                    layout="fill"
-                    objectFit="contain"
+                    fill
+                    style={{ objectFit: "contain" }}
+                    quality={80}
                   />
                 </div>
                 <h3 className="font-semibold text-lg">{opportunity.title}</h3>

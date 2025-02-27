@@ -93,6 +93,7 @@ const HeroSection = () => {
               height={600}
               priority
               className="relative z-50 drop-shadow-2xl"
+              quality={90}
             />
           </motion.div>
         </div>

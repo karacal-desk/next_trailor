@@ -49,8 +49,9 @@ const Tools = () => {
                 <Image
                   src={tool.image || "/placeholder.svg"}
                   alt={tool.name}
-                  layout="fill"
-                  objectFit="contain"
+                  fill
+                  style={{ objectFit: "contain" }}
+                  quality={90}
                 />
               </div>
               <h3 className="absolute bottom-2 right-2 font-semibold text-sm text-[#F0C38E]">
