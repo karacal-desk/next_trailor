@@ -64,7 +64,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-700 text-center">
-          <p>&copy; 2025 ASHAA Dress Designing School. All rights reserved.</p>
+          <p>
+            &copy; 2025 ASHAA Dress Designing Institute. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

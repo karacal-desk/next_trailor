@@ -1,4 +1,4 @@
-import About from "@/components/About";
+import About from "@/components/About.mod";
 import Courses from "@/components/Courses";
 import HeroSection from "@/components/HeroSection.mod";
 import Jobs from "@/components/Jobs";
@@ -10,8 +10,8 @@ const page = () => {
     <main className="flex-grow">
       <HeroSection />
       <About />
-      <Tools />
       <Courses />
+      <Tools />
       <Jobs />
     </main>
   );

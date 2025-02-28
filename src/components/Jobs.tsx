@@ -16,10 +16,10 @@ const Jobs = () => {
   ];
 
   return (
-    <section className="py-20 bg-black/30 backdrop-blur-sm">
+    <section className="py-20 bg-[#111213] backdrop-blur-sm">
       <div className="container mx-auto px-4 text-center">
         <motion.h2
-          className="text-4xl font-bold mb-12 text-[#F0C38E]"
+          className="text-4xl font-bold mb-12 text-center text-[#F0C38E] drop-shadow-[0_0_10px_#F0C38E] sm:drop-shadow-[0_0_15px_#F0C38E]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

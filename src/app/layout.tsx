@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/Footer";
-import Background from "@/components/Background";
 import { Lora, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar.mod";
 
@@ -30,7 +29,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={` ${raleway.variable} ${lora.variable}`}>
       <body className={` antialiased flex flex-col min-h-screen`}>
-        <Background />
         <Navbar />
         {children}
         <Footer />

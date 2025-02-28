@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <div className="relative bg-black/30 backdrop-blur-sm py-12 md:py-24">
+    <div className="relative bg-[#111213] backdrop-blur-sm py-12 md:py-24">
       <div className="container mx-auto px-4">
         <div className="grid mt-12 md:mt-4 items-center gap-12 md:grid-cols-2">
           <motion.div
@@ -47,7 +47,7 @@ const HeroSection = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              <Button className="text-md font-semibold bg-[#F0C38E] px-6 py-3 text-white shadow-lg shadow-[#F0C38E]/40 transition-all duration-300 hover:bg-[#F0C38E]/90 hover:shadow-[#F0C38E]/60">
+              <Button className="text-md font-semibold bg-[#F0C38E] px-6 py-3 text-black shadow-lg shadow-[#F0C38E]/40 transition-all duration-300 hover:bg-[#F0C38E]/90 hover:shadow-[#F0C38E]/60">
                 Start Learning
               </Button>
               <Button

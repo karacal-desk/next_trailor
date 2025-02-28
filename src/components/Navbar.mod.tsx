@@ -85,8 +85,13 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed bg-[#221F39] text-[#F0C38E] z-30 w-full shadow-lg">
-        <div className="container mx-auto px-2">
+      <motion.div
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="fixed bg-[#221F39] text-[#F0C38E] z-30 w-full shadow-lg"
+      >
+        <nav className="container mx-auto px-2">
           <div className="flex justify-between items-center h-20">
             <Link href="/" className="ml-3 md:ml-0 font-bold text-2xl">
               ASHAA
@@ -153,8 +158,8 @@ const Navbar = () => {
               )}
             </Button>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </motion.div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
