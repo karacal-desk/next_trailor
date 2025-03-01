@@ -68,7 +68,7 @@ const HeroSection = () => {
                 {[1, 2, 3].map((num) => (
                   <div
                     key={num}
-                    className="h-8 w-8 rounded-full border-2 border-white bg-[#40E0D0] shadow-md"
+                    className="h-8 w-8 rounded-full border-2 border-white bg-[#F0C38E] shadow-md"
                   />
                 ))}
               </div>

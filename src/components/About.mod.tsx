@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { CheckCircle, Eye } from "lucide-react";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
 
 const About = () => {
   const [showCertificate, setShowCertificate] = useState(false);
@@ -93,9 +95,21 @@ const About = () => {
           </div>
           <div className="flex justify-center items-center md:w-1/3 p-4">
             <div className="h-32 bg-gray-300 w-full rounded-lg flex items-center justify-center">
-              <span className="text-gray-600 text-sm text-center">
-                Govt. Council Logo
-              </span>
+              <div className="relative w-full h-32 bg-gray-300 rounded-lg flex items-center justify-center">
+                <Link
+                  href="https://aicvt.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src="/logo.png"
+                    alt="aictv logo"
+                    fill
+                    style={{ objectFit: "contain" }}
+                    quality={80}
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </motion.div>

@@ -147,7 +147,7 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <Button
-              variant="ghost"
+              variant="default"
               className="md:hidden mr-3  bg-[#F0C38E]/90 text-[#221F39]"
               onClick={toggleMobileMenu}
             >
