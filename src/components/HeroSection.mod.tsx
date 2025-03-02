@@ -47,7 +47,10 @@ const HeroSection = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              <Button className="text-md font-semibold bg-[#F0C38E] px-6 py-3 text-black shadow-lg shadow-[#F0C38E]/40 transition-all duration-300 hover:bg-[#F0C38E]/90 hover:shadow-[#F0C38E]/60">
+              <Button
+                variant={"outline"}
+                className="text-md font-semibold  px-6 py-3 bg-[#F0C38E]/10 text-white border-[#F0C38E] hover:text-[#F0C38E] shadow-lg shadow-[#F0C38E]/30 transition-all duration-300"
+              >
                 Start Learning
               </Button>
               <Button

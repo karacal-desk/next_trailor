@@ -9,43 +9,31 @@ import { motion, AnimatePresence } from "framer-motion";
 // Define the structure for our navigation items
 type NavItem = {
   title: string;
-  items: { title: string; href: string }[];
+  items: { title: string; time: string }[];
 };
 
 // Our navigation data
-const navItems: NavItem[] = [
-  {
-    title: "Menu",
-    items: [
-      { title: "Tailoring Courses", href: "#tailoring" },
-      { title: "Dress Designing Courses", href: "#designing" },
-      { title: "Student's Creation", href: "#creations" },
-    ],
-  },
-  {
-    title: "Courses",
-    items: [
-      { title: "Basic Tailoring Course (6 months)", href: "#basic-tailoring" },
-      { title: "Basic Embroidery Course (3 months)", href: "#embroidery" },
-      {
-        title: "Diploma in Tailoring and Dress Designing (1 year)",
-        href: "#diploma",
-      },
-      { title: "Short-term Fun Courses (3 months)", href: "#short-term" },
-      { title: "Recycle & Reuse Old Clothes (3 months)", href: "#recycle" },
-    ],
-  },
-  {
-    title: "Certificates",
-    items: [
-      { title: "Certificates for Tailoring Course", href: "#tailoring-cert" },
-      {
-        title: "Diploma Certificate for Dress Designing",
-        href: "#designing-cert",
-      },
-    ],
-  },
-];
+const navItems: NavItem = {
+  title: "Timings",
+  items: [
+    {
+      title: "Monday & Wednesday (2 batches) ",
+      time: "11:00 A.M. > 01:00 P.M. | 04:00 P.M. > 06:00 P.M.",
+    },
+    {
+      title: "Tuesday & Thursday (2 batches) ",
+      time: "11:00 A.M. > 01:00 P.M. | 04:00 P.M. > 06:00 P.M.",
+    },
+    {
+      title: "Sunday (Working Professionals) ",
+      time: "11:00 A.M. > 01:00 P.M.",
+    },
+    {
+      title: "Friday (Online Class) ",
+      time: "11:00 A.M. > 01:00 P.M.",
+    },
+  ],
+};
 
 const Navbar = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
@@ -99,55 +87,61 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-4 font-sans text-2xl">
-              {navItems.map((item) => (
-                <div key={item.title} className="relative">
-                  <Button
-                    variant="ghost"
-                    className="flex items-center gap-1 text-[#F0C38E] hover:text-[#221F39] hover:bg-[#F0C38E]"
-                    onClick={() => toggleDesktopSection(item.title)}
+              <div key={navItems.title} className="relative">
+                <Button
+                  variant="ghost"
+                  className="flex items-center gap-1 text-[#F0C38E] hover:text-[#221F39] hover:bg-[#F0C38E]"
+                  onClick={() => toggleDesktopSection(navItems.title)}
+                >
+                  {navItems.title}
+                  <motion.div
+                    animate={{
+                      rotate: expandedSection === navItems.title ? 180 : 0,
+                    }}
+                    transition={{ duration: 0.3 }}
                   >
-                    {item.title}
-                    <motion.div
-                      animate={{
-                        rotate: expandedSection === item.title ? 180 : 0,
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="h-4 w-4" />
-                    </motion.div>
-                  </Button>
+                    <ChevronDown className="h-4 w-4" />
+                  </motion.div>
+                </Button>
 
-                  <AnimatePresence>
-                    {expandedSection === item.title && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full right-0 mt-2 bg-[#221F39] rounded-md shadow-lg z-20 min-w-[250px] border border-[#F0C38E]/20"
-                      >
-                        <div className="p-3">
-                          {item.items.map((subItem, index) => (
-                            <Link
-                              href={subItem.href}
-                              key={index}
+                <AnimatePresence>
+                  {expandedSection === navItems.title && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full right-0 mt-2 bg-[#221F39] rounded-md shadow-lg z-20 md:min-w-[450px] border border-[#F0C38E]/20"
+                    >
+                      <div className="p-3 flex flex-col">
+                        {navItems.items.map((subItem) => (
+                          <>
+                            <p
                               className="block py-2 px-3 text-base hover:bg-[#F0C38E]/10 rounded transition-colors"
                               onClick={closeAll}
                             >
                               {subItem.title}
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
+                              <ChevronDown />
+                            </p>
+
+                            <p
+                              className="block py-2 px-3 text-gray-400 text-base hover:bg-[#F0C38E]/10 rounded transition-colors"
+                              onClick={closeAll}
+                            >
+                              {subItem.time}
+                            </p>
+                          </>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
 
             {/* Mobile Menu Button */}
             <Button
-              variant="default"
+              variant="ghost"
               className="md:hidden mr-3  bg-[#F0C38E]/90 text-[#221F39]"
               onClick={toggleMobileMenu}
             >
@@ -172,56 +166,61 @@ const Navbar = () => {
             className="md:hidden fixed top-20 left-0 w-full bg-[#221F39] text-[#F0C38E] z-20 overflow-hidden"
           >
             <div className="p-4 overflow-y-auto h-full">
-              {navItems.map((section) => (
-                <div key={section.title} className="mb-4">
-                  <motion.button
-                    className="flex items-center justify-between w-full text-xl font-semibold py-3 border-b border-[#F0C38E]/20"
-                    onClick={() => toggleMobileSection(section.title)}
-                    whileTap={{ scale: 0.98 }}
+              <div key={navItems.title} className="mb-4">
+                <motion.button
+                  className="flex items-center justify-between w-full text-xl font-semibold py-3 border-b border-[#F0C38E]/20"
+                  onClick={() => toggleMobileSection(navItems.title)}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {navItems.title}
+                  <motion.div
+                    animate={{
+                      rotate: activeMobileSection === navItems.title ? 180 : 0,
+                    }}
+                    transition={{ duration: 0.3 }}
                   >
-                    {section.title}
-                    <motion.div
-                      animate={{
-                        rotate: activeMobileSection === section.title ? 180 : 0,
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="h-5 w-5" />
-                    </motion.div>
-                  </motion.button>
+                    <ChevronDown className="h-5 w-5" />
+                  </motion.div>
+                </motion.button>
 
-                  <AnimatePresence>
-                    {activeMobileSection === section.title && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="mt-2 ml-4 space-y-1 py-2">
-                          {section.items.map((item, idx) => (
-                            <motion.div
-                              key={idx}
-                              initial={{ x: -10, opacity: 0 }}
-                              animate={{ x: 0, opacity: 1 }}
-                              transition={{ delay: idx * 0.05 }}
+                <AnimatePresence>
+                  {activeMobileSection === navItems.title && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-2 ml-4 space-y-1 py-2">
+                        {navItems.items.map((item, idx) => (
+                          <motion.div
+                            key={idx}
+                            initial={{ x: -10, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: idx * 0.05 }}
+                          >
+                            <p
+                              className="block py-2 px-3 text-base hover:bg-[#F0C38E]/10 rounded transition-colors"
+                              onClick={closeAll}
                             >
-                              <Link
-                                href={item.href}
-                                className="block py-3 hover:text-[#F0C38E]/80 text-lg"
-                                onClick={closeAll}
-                              >
-                                {item.title}
-                              </Link>
-                            </motion.div>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
+                              {item.title}
+                              <ChevronDown />
+                            </p>
+
+                            <p
+                              className="block py-2 px-3 text-base text-gray-400 hover:bg-[#F0C38E]/10 rounded transition-colors"
+                              onClick={closeAll}
+                            >
+                              {item.time}
+                            </p>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </motion.div>
         )}
