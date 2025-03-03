@@ -77,7 +77,7 @@ const Navbar = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed bg-[#221F39] text-[#F0C38E] z-30 w-full shadow-lg"
+        className="fixed bg-[#221F39] text-[#F0C38E] z-10 w-full shadow-lg"
       >
         <nav className="container mx-auto px-2">
           <div className="flex justify-between items-center h-20">

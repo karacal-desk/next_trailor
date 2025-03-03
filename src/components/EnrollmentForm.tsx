@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import type React from "react";
+import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -20,11 +21,23 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
   onCancel,
   isOpen,
 }) => {
-  const modalRef = useRef<HTMLDivElement | null>(null);
+  const headerRef = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
-    if (isOpen && modalRef.current) {
-      modalRef.current.focus();
+    if (isOpen) {
+      // Small timeout to ensure the modal is fully rendered before focusing
+      const timer = setTimeout(() => {
+        if (headerRef.current) {
+          headerRef.current.focus();
+          // Scroll to ensure the header is visible
+          headerRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }
+      }, 100);
+
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
@@ -36,7 +49,12 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
           isOpen ? "block" : "hidden"
         } md:static md:block`}
       >
-        <FormContent course={course} onSubmit={onSubmit} onCancel={onCancel} />
+        <FormContent
+          course={course}
+          onSubmit={onSubmit}
+          onCancel={onCancel}
+          headerRef={headerRef}
+        />
       </div>
 
       {/* Desktop View - Modal Overlay */}
@@ -46,15 +64,14 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
           onClick={onCancel} // Click outside to close
         >
           <div
-            ref={modalRef}
-            tabIndex={-1}
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
-            className="bg-[#1a1a1c] p-6 rounded-lg shadow-lg border border-[#9370DB]/50 max-w-lg w-full"
+            className="bg-[#1a1a1c] p-6 rounded-lg shadow-lg border border-[#9370DB]/50 max-w-lg w-full mt-16"
           >
             <FormContent
               course={course}
               onSubmit={onSubmit}
               onCancel={onCancel}
+              headerRef={headerRef}
             />
           </div>
         </div>
@@ -64,14 +81,20 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
 };
 
 // Extracted Form Content to reuse in both views
-const FormContent: React.FC<Omit<EnrollmentFormProps, "isOpen">> = ({
-  course,
-  onSubmit,
-  onCancel,
-}) => (
+const FormContent: React.FC<
+  Omit<EnrollmentFormProps, "isOpen"> & {
+    headerRef: React.RefObject<HTMLHeadingElement>;
+  }
+> = ({ course, onSubmit, onCancel, headerRef }) => (
   <>
-    <div className="flex justify-between items-center mb-4">
-      <h3 className="text-xl font-semibold text-[#F0C38E]">Enrollment Form</h3>
+    <div className="flex justify-between items-center mb-4 sticky top-0 bg-[#1a1a1c] py-4 z-10">
+      <h3
+        ref={headerRef}
+        tabIndex={-1}
+        className="text-xl font-semibold text-[#F0C38E] outline-none"
+      >
+        Enrollment Form
+      </h3>
       <Button
         variant="default"
         size="icon"

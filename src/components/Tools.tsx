@@ -11,14 +11,13 @@ interface Tools {
 }
 
 const toolSet: Tools[] = [
-  { index: 101, name: "Sewing Machine", image: "/sewing_machine.png" },
-  { index: 102, name: "Mannequin", image: "/manequin.png" },
-  { index: 103, name: "Scissors", image: "/scissors.png" },
-  { index: 104, name: "Measuring Tape", image: "/measuring_tape.png" },
-  { index: 105, name: "Iron", image: "/iron.png" },
-  { index: 106, name: "Pins and Needles", image: "/pins_needles.png" },
-  { index: 107, name: "Thimble", image: "/thimble.png" },
-  { index: 108, name: "Fabric Chalk", image: "/fabric_chalk.png" },
+  { index: 104, name: "Guide Book", image: "/guide_book.png" },
+  { index: 105, name: "Scissors", image: "/scissors.png" },
+  { index: 106, name: "Threads", image: "/threads.png" },
+  { index: 103, name: "Measuring Tape", image: "/measuring_tape.png" },
+  { index: 107, name: "Pins and Needles", image: "/pins_needles.png" },
+  { index: 108, name: "Thimble", image: "/thimble.png" },
+  { index: 109, name: "Fabric Chalk", image: "/fabric_chalk.png" },
 ];
 
 const Tools = () => {

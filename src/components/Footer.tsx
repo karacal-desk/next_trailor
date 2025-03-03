@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-6">
               <li>
                 <Link
                   href="#courses"
@@ -18,12 +18,18 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary transition-colors">
+                <Link
+                  href="#"
+                  className=" p-2 rounded-sm hover:bg-white hover:text-primary  transition-colors"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary transition-colors">
+                <Link
+                  href="#"
+                  className=" p-2 rounded-sm hover:bg-white hover:text-primary  transition-colors"
+                >
                   Contact Us
                 </Link>
               </li>
@@ -33,23 +39,35 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4">Additional Information</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#" className="hover:text-primary transition-colors">
+                <Link
+                  href="#"
+                  className=" p-2 rounded-sm hover:bg-white hover:text-primary  transition-colors"
+                >
                   Jobs
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary transition-colors">
+                <Link
+                  href="#"
+                  className=" p-2 rounded-sm hover:bg-white hover:text-primary  transition-colors"
+                >
                   Loan Facility
                 </Link>
               </li>
 
               <li>
-                <Link href="#" className="hover:text-primary transition-colors">
+                <Link
+                  href="#"
+                  className=" p-2 rounded-sm hover:bg-white hover:text-primary  transition-colors"
+                >
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary transition-colors">
+                <Link
+                  href="#"
+                  className=" p-2 rounded-sm hover:bg-white hover:text-primary  transition-colors"
+                >
                   Privacy Policy
                 </Link>
               </li>
