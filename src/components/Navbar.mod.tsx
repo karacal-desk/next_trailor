@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -41,6 +42,16 @@ const Navbar = () => {
   const [activeMobileSection, setActiveMobileSection] = useState<string | null>(
     null,
   );
+  const [showLogo, setShowLogo] = useState(false);
+
+  // Toggle between logo and text every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowLogo((prev) => !prev);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const toggleDesktopSection = (title: string) => {
     if (expandedSection === title) {
@@ -81,13 +92,45 @@ const Navbar = () => {
       >
         <nav className="container mx-auto px-2">
           <div className="flex justify-between items-center h-20">
-            <Link href="/" className="ml-3 md:ml-0 font-bold text-2xl">
-              ASHAA
+            <Link
+              href="/"
+              className="ml-3 md:ml-0 font-bold text-2xl flex items-center"
+            >
+              <AnimatePresence mode="wait">
+                {showLogo ? (
+                  <motion.div
+                    key="logo"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="w-14 mt-1 h-14 relative"
+                  >
+                    <Image
+                      src="/icon.png"
+                      alt="ASHAA Logo"
+                      width={60}
+                      height={60}
+                      className="object-contain"
+                    />
+                  </motion.div>
+                ) : (
+                  <motion.span
+                    key="text"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    ASHAA
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-4 font-sans text-2xl">
-              <div key={navItems.title} className="relative">
+              <div key={navItems.title} className="relative flex flex-row">
                 <Button
                   variant="ghost"
                   className="flex items-center gap-1 text-[#F0C38E] hover:text-[#221F39] hover:bg-[#F0C38E]"
@@ -104,6 +147,13 @@ const Navbar = () => {
                   </motion.div>
                 </Button>
 
+                <Button
+                  variant="ghost"
+                  className="flex items-center gap-1 text-[#F0C38E] hover:text-[#221F39] hover:bg-[#F0C38E]"
+                >
+                  <p>+91 9147714547</p>
+                </Button>
+
                 <AnimatePresence>
                   {expandedSection === navItems.title && (
                     <motion.div
@@ -114,8 +164,8 @@ const Navbar = () => {
                       className="absolute top-full right-0 mt-2 bg-[#221F39] rounded-md shadow-lg z-20 md:min-w-[450px] border border-[#F0C38E]/20"
                     >
                       <div className="p-3 flex flex-col">
-                        {navItems.items.map((subItem) => (
-                          <>
+                        {navItems.items.map((subItem, index) => (
+                          <div key={index}>
                             <p
                               className="block py-2 px-3 text-base hover:bg-[#F0C38E]/10 rounded transition-colors"
                               onClick={closeAll}
@@ -130,7 +180,7 @@ const Navbar = () => {
                             >
                               {subItem.time}
                             </p>
-                          </>
+                          </div>
                         ))}
                       </div>
                     </motion.div>
@@ -142,7 +192,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
-              className="md:hidden mr-3  bg-[#F0C38E]/90 text-[#221F39]"
+              className="md:hidden mr-3 bg-[#F0C38E]/90 text-[#221F39]"
               onClick={toggleMobileMenu}
             >
               {mobileMenuOpen ? (
@@ -221,6 +271,7 @@ const Navbar = () => {
                   )}
                 </AnimatePresence>
               </div>
+              <p className="text-[#F0C38E] text-xl">Ph. no: +91 9147714547</p>
             </div>
           </motion.div>
         )}

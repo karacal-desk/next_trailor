@@ -78,13 +78,14 @@ const Footer = () => {
             <p>
               Kalibari Girls School Road, New Barrackpore, Kolkata, West Bengal
             </p>
-            <p>Phone: +91 1234567890</p>
-            <p>Email: info@ashaadressdesign.com</p>
+            <p>Phone: +91 9147714547</p>
+            <p>Email: ashaafoundation25@gmail.com</p>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-700 text-center">
           <p>
-            &copy; 2025 ASHAA Dress Designing Institute. All rights reserved.
+            &copy; {new Date().getFullYear()} ASHAA Dress Designing Institute.
+            All rights reserved.
           </p>
         </div>
       </div>

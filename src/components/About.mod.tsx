@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle, Eye } from "lucide-react";
+import { CheckCircle, Eye, X } from "lucide-react";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -89,11 +89,11 @@ const About = () => {
                 onClick={() => setShowCertificate(true)}
                 className="bg-[#F0C38E] text-black hover:bg-[#F0C38E]/80"
               >
-                <Eye className="w-4 h-4 mr-2" /> Preview Affiliation Certificate
+                <Eye className="w-4 h-4 mr-2" /> Preview Sample Certificate
               </Button>
             </CardContent>
           </div>
-          <div className="flex justify-center items-center md:w-1/3 p-4">
+          <div className="flex flex-col gap-5 justify-center items-center md:w-1/3 p-4">
             <div className="h-32 bg-gray-300 w-full rounded-lg flex items-center justify-center">
               <div className="relative w-full h-32 bg-gray-300 rounded-lg flex items-center justify-center">
                 <Link
@@ -102,7 +102,7 @@ const About = () => {
                   rel="noopener noreferrer"
                 >
                   <Image
-                    src="/logo.png"
+                    src="/aicvt.png"
                     alt="aictv logo"
                     fill
                     style={{ objectFit: "contain" }}
@@ -110,6 +110,12 @@ const About = () => {
                   />
                 </Link>
               </div>
+            </div>
+
+            <div>
+              <p className="mb-4 font-semibold text-[#F0C38E]">
+                All India Council For Vocational Training
+              </p>
             </div>
           </div>
         </motion.div>
@@ -141,22 +147,37 @@ const About = () => {
 
       {/* Certificate Preview Modal */}
       {showCertificate && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-4 rounded-lg max-w-3xl w-full mx-4">
-            <h3 className="text-2xl font-bold mb-4 text-gray-800">
-              Affiliation Certificate
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+          <div className="bg-white p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
+            <h3 className="text-2xl font-bold mb-4 text-gray-800 flex justify-between items-center">
+              <span>Sample Certificate</span>
+              <Button
+                onClick={() => setShowCertificate(false)}
+                variant="ghost"
+                className="h-8 w-8 p-0 bg-black text-white rounded-full"
+              >
+                <span className="sr-only">Close</span>
+                <X className="h-6 w-6" />
+              </Button>
             </h3>
-            <div className="aspect-w-16 aspect-h-9 bg-gray-200 mb-4 flex items-center justify-center">
-              <span className="text-gray-600">
-                Certificate Image Placeholder
-              </span>
+            <div className="relative w-full h-[60vh] mb-6">
+              <Image
+                src="/sample.jpeg"
+                alt="Sample Certificate"
+                fill
+                style={{ objectFit: "contain" }}
+                quality={100}
+                className="rounded-md"
+              />
             </div>
-            <Button
-              onClick={() => setShowCertificate(false)}
-              className="bg-[#F0C38E] text-black hover:bg-[#F0C38E]/80"
-            >
-              Close Preview
-            </Button>
+            <div className="flex justify-end">
+              <Button
+                onClick={() => setShowCertificate(false)}
+                className="bg-[#F0C38E] text-black hover:bg-[#F0C38E]/80"
+              >
+                Close Preview
+              </Button>
+            </div>
           </div>
         </div>
       )}
