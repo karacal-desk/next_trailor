@@ -15,7 +15,7 @@ import EnrollmentForm from "./EnrollmentForm";
 import SyllabusModal from "./SyllabusModal";
 import { courses, diplomaCourse, type Course } from "@/lib/CourseData";
 import { Progress } from "@/components/ui/progress";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 
 const Courses = () => {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
@@ -24,15 +24,13 @@ const Courses = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // Add an ID to the section for direct hash navigation
     if (sectionRef.current) {
       sectionRef.current.id = "courses";
     }
 
-    // Function to handle smooth scrolling
     const handleHashChange = () => {
       if (window.location.hash === "#courses" && sectionRef.current) {
-        const headerHeight = 80; // Adjust this value based on your header height
+        const headerHeight = 80;
         const yOffset = -headerHeight;
         const y =
           sectionRef.current.getBoundingClientRect().top +
@@ -43,22 +41,18 @@ const Courses = () => {
       }
     };
 
-    // Add event listener for hash changes
     window.addEventListener("hashchange", handleHashChange);
 
-    // Handle initial load with hash in URL
     if (window.location.hash === "#courses") {
-      // Small delay to ensure the element is fully rendered
       setTimeout(handleHashChange, 100);
     }
 
-    // Modify all links pointing to #courses to use smooth scrolling
     document.querySelectorAll('a[href="#courses"]').forEach((anchor) => {
       anchor.addEventListener("click", (e) => {
         e.preventDefault();
 
         if (sectionRef.current) {
-          const headerHeight = 80; // Adjust this value based on your header height
+          const headerHeight = 80;
           const yOffset = -headerHeight;
           const y =
             sectionRef.current.getBoundingClientRect().top +
@@ -67,7 +61,6 @@ const Courses = () => {
 
           window.scrollTo({ top: y, behavior: "smooth" });
 
-          // Update URL without causing page reload
           window.history.pushState(null, "", "#courses");
         }
       });
@@ -92,9 +85,9 @@ const Courses = () => {
       setIsSubmitting(false);
       setSelectedCourse(null);
       toast.success("Enrollment Successful!", {
-        description: `You have successfully enrolled for ${selectedCourse}, checkout your email`,
+        description: `You have successfully enrolled for ${selectedCourse}, check your email for confirmation`,
       });
-    }, 2000);
+    }, 3000);
   };
 
   const handleCancel = () => {
@@ -102,6 +95,9 @@ const Courses = () => {
     setShowSyllabus(null);
   };
 
+  {
+    /*Every Course*/
+  }
   const renderCourseCard = (course: Course, index: number) => (
     <motion.div
       key={index}
@@ -163,7 +159,9 @@ const Courses = () => {
       </CardContent>
     </motion.div>
   );
-
+  {
+    /*Diploma Course*/
+  }
   const renderDiplomaCourseCard = () => (
     <motion.div
       className="flex flex-grow flex-col text-left  md:max-w-[48%] p-4 bg-black/50 shadow-inner rounded-md shadow-[#F0C38E]/70 backdrop-blur-sm text-white transition-all duration-300 hover:shadow-lg relative"
@@ -306,9 +304,11 @@ const Courses = () => {
         )}
       </AnimatePresence>
 
-      <div className="fixed bottom-10 inset-x-4 sm:inset-auto sm:right-4 sm:bottom-4 z-[9999]">
-        <Toaster />
-      </div>
+      {
+        //<div className="fixed bottom-10 inset-x-4 sm:inset-auto sm:right-4 sm:bottom-4 z-[9999]">
+        //  <Toaster />
+        //</div>
+      }
     </section>
   );
 };

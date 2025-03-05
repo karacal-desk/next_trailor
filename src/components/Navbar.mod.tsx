@@ -7,13 +7,11 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Define the structure for our navigation items
 type NavItem = {
   title: string;
   items: { title: string; time: string }[];
 };
 
-// Our navigation data
 const navItems: NavItem = {
   title: "Timings",
   items: [
@@ -44,7 +42,6 @@ const Navbar = () => {
   );
   const [showLogo, setShowLogo] = useState(false);
 
-  // Toggle between logo and text every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setShowLogo((prev) => !prev);
@@ -149,7 +146,7 @@ const Navbar = () => {
 
                 <Button
                   variant="default"
-                  className="flex font-semibold items-center gap-1 text-[#221F39] hover:text-[#F0C38E] bg-[#F0C38E]"
+                  className="flex ml-2 font-semibold items-center gap-1 text-[#221F39] hover:text-[#F0C38E] bg-[#F0C38E]"
                 >
                   <p>+91 9147714547</p>
                 </Button>
@@ -271,7 +268,21 @@ const Navbar = () => {
                   )}
                 </AnimatePresence>
               </div>
-              <p className="text-[#F0C38E] text-xl">Ph. no: +91 9147714547</p>
+              <div className="flex flex-col mx-auto  gap-4 ">
+                <Button
+                  variant="default"
+                  className="flex ml-2 font-semibold justify-start items-center gap-1 text-[#221F39]  bg-[#F0C38E]"
+                >
+                  <p>Phone: +91 9147714547</p>
+                </Button>
+
+                <Button
+                  variant="default"
+                  className="flex ml-2 font-semibold justify-start items-center gap-1 text-[#221F39]  bg-[#F0C38E]"
+                >
+                  <p>Email: ashaafoundation25@gmail.com</p>
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}

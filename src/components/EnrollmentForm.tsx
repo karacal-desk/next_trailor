@@ -11,7 +11,6 @@ import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import type { Course } from "@/lib/CourseData";
 
-// Zod Schema for Form Validation
 const enrollmentSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
   lastName: z.string().min(2, "Last name must be at least 2 characters"),
@@ -94,7 +93,6 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
   );
 };
 
-// Extracted Form Content
 const FormContent: React.FC<
   Omit<EnrollmentFormProps, "isOpen"> & {
     headerRef: React.RefObject<HTMLHeadingElement>;
