@@ -77,7 +77,7 @@ export const courses: Course[] = [
     fee: {
       admission: "₹550",
       monthly: "₹500",
-      exam: "₹1200",
+      exam: "₹800",
     },
     syllabus: {
       "Neck Designs": [
@@ -112,7 +112,7 @@ export const courses: Course[] = [
     fee: {
       admission: "₹550",
       monthly: "₹500",
-      exam: "₹1200",
+      exam: "₹800",
     },
     syllabus: {
       "Kurti Styles": [
@@ -145,7 +145,7 @@ export const courses: Course[] = [
     fee: {
       admission: "₹600",
       monthly: "₹650",
-      exam: "₹1200",
+      exam: "₹800",
     },
     syllabus: {
       "Saree Types & Styles": [
@@ -169,7 +169,7 @@ export const courses: Course[] = [
     fee: {
       admission: "₹550",
       monthly: "₹500",
-      exam: "₹1200",
+      exam: "₹800",
     },
     syllabus: {
       "Recycled Clothing": [
@@ -200,7 +200,7 @@ export const diplomaCourse = {
   fee: {
     admission: "₹650",
     monthly: "₹600",
-    exam: "₹1200",
+    exam: "₹1000",
   },
   semesters: {
     "First Semester (Basic Tailoring)": {

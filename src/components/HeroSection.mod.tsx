@@ -1,9 +1,9 @@
 "use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -47,18 +47,22 @@ const HeroSection = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              <Button
-                variant={"outline"}
-                className="text-md font-semibold  px-6 py-3 bg-[#F0C38E]/10 text-white border-[#F0C38E] hover:text-[#F0C38E] shadow-lg shadow-[#F0C38E]/30 transition-all duration-300"
-              >
-                Start Learning
-              </Button>
-              <Button
-                variant="outline"
-                className="text-md font-semibold bg-[#9370DB]/10 text-white border-[#9370DB] hover:text-[#9370DB] shadow-lg shadow-[#9370DB]/30 transition-all duration-300"
-              >
-                Explore Courses
-              </Button>
+              <Link href="#courses">
+                <Button
+                  variant={"outline"}
+                  className="text-md font-semibold w-full bg-[#F0C38E]/10 text-white border-[#F0C38E] hover:text-[#F0C38E] shadow-lg shadow-[#F0C38E]/30 transition-all duration-300"
+                >
+                  Start Learning
+                </Button>
+              </Link>
+              <Link href="#courses">
+                <Button
+                  variant="outline"
+                  className="text-md font-semibold w-full bg-[#9370DB]/10 text-white border-[#9370DB] hover:text-[#9370DB] shadow-lg shadow-[#9370DB]/30 transition-all duration-300"
+                >
+                  Explore Courses
+                </Button>
+              </Link>
             </motion.div>
             <motion.div
               className="mt-8 flex flex-col items-center gap-2 sm:flex-row justify-center md:justify-start"
@@ -71,12 +75,12 @@ const HeroSection = () => {
                 {[1, 2, 3].map((num) => (
                   <div
                     key={num}
-                    className="h-8 w-8 rounded-full border-2 border-white bg-[#F0C38E] shadow-md"
+                    className="h-6 w-6 rounded-full border-2 border-white bg-[#F0C38E] shadow-md"
                   />
                 ))}
               </div>
               <p className="text-sm text-gray-400">
-                Join 1000+ students already learning
+                Join 500+ students already learning
               </p>
             </motion.div>
           </motion.div>

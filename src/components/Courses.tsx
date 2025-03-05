@@ -1,7 +1,6 @@
 "use client";
 
-import type React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -15,10 +14,69 @@ import { ChevronDown } from "lucide-react";
 import EnrollmentForm from "./EnrollmentForm";
 import SyllabusModal from "./SyllabusModal";
 import { courses, diplomaCourse, type Course } from "@/lib/CourseData";
+import { Progress } from "@/components/ui/progress";
+import { toast, Toaster } from "sonner";
 
 const Courses = () => {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
   const [showSyllabus, setShowSyllabus] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Add an ID to the section for direct hash navigation
+    if (sectionRef.current) {
+      sectionRef.current.id = "courses";
+    }
+
+    // Function to handle smooth scrolling
+    const handleHashChange = () => {
+      if (window.location.hash === "#courses" && sectionRef.current) {
+        const headerHeight = 80; // Adjust this value based on your header height
+        const yOffset = -headerHeight;
+        const y =
+          sectionRef.current.getBoundingClientRect().top +
+          window.pageYOffset +
+          yOffset;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    };
+
+    // Add event listener for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+
+    // Handle initial load with hash in URL
+    if (window.location.hash === "#courses") {
+      // Small delay to ensure the element is fully rendered
+      setTimeout(handleHashChange, 100);
+    }
+
+    // Modify all links pointing to #courses to use smooth scrolling
+    document.querySelectorAll('a[href="#courses"]').forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (sectionRef.current) {
+          const headerHeight = 80; // Adjust this value based on your header height
+          const yOffset = -headerHeight;
+          const y =
+            sectionRef.current.getBoundingClientRect().top +
+            window.pageYOffset +
+            yOffset;
+
+          window.scrollTo({ top: y, behavior: "smooth" });
+
+          // Update URL without causing page reload
+          window.history.pushState(null, "", "#courses");
+        }
+      });
+    });
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
 
   const handleEnroll = (courseName: string) => {
     setSelectedCourse(courseName === selectedCourse ? null : courseName);
@@ -28,10 +86,15 @@ const Courses = () => {
     setShowSyllabus(courseName === showSyllabus ? null : courseName);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Enrollment submitted for ${selectedCourse}`);
-    setSelectedCourse(null);
+  const handleSubmit = () => {
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSelectedCourse(null);
+      toast.success("Enrollment Successful!", {
+        description: `You have successfully enrolled for ${selectedCourse}, checkout your email`,
+      });
+    }, 2000);
   };
 
   const handleCancel = () => {
@@ -41,7 +104,6 @@ const Courses = () => {
 
   const renderCourseCard = (course: Course, index: number) => (
     <motion.div
-      id="courses"
       key={index}
       className="flex flex-grow flex-col text-left md:max-w-[48%] p-4 bg-black/50 shadow-inner rounded-md shadow-[#F0C38E]/70 backdrop-blur-sm text-white transition-all duration-300 hover:shadow-lg relative"
       initial={{ opacity: 0, y: 20 }}
@@ -164,7 +226,14 @@ const Courses = () => {
   );
 
   return (
-    <section className="py-20 bg-[#111213] backdrop-blur-sm relative">
+    <section
+      ref={sectionRef}
+      className="py-20 bg-[#111213] backdrop-blur-sm relative"
+    >
+      {isSubmitting && (
+        <Progress value={100} className="w-full h-1 fixed top-0 left-0 z-50" />
+      )}
+
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-4xl font-bold mb-12 text-center text-[#F0C38E] drop-shadow-[0_0_10px_#F0C38E] sm:drop-shadow-[0_0_15px_#F0C38E]"
@@ -200,7 +269,7 @@ const Courses = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center"
-            onClick={handleCancel}
+            onClick={() => !isSubmitting && handleCancel()}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -217,7 +286,8 @@ const Courses = () => {
                 }
                 onSubmit={handleSubmit}
                 onCancel={handleCancel}
-                isOpen={!!selectedCourse} // ✅ Passing isOpen prop
+                isOpen={!!selectedCourse}
+                isSubmitting={isSubmitting}
               />
             </motion.div>
           </motion.div>
@@ -235,8 +305,11 @@ const Courses = () => {
           />
         )}
       </AnimatePresence>
+
+      <div className="fixed bottom-10 inset-x-4 sm:inset-auto sm:right-4 sm:bottom-4 z-[9999]">
+        <Toaster />
+      </div>
     </section>
   );
 };
-
 export default Courses;

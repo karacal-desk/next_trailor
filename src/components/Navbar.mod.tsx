@@ -133,7 +133,7 @@ const Navbar = () => {
               <div key={navItems.title} className="relative flex flex-row">
                 <Button
                   variant="ghost"
-                  className="flex items-center gap-1 text-[#F0C38E] hover:text-[#221F39] hover:bg-[#F0C38E]"
+                  className="flex items-center font-semibold gap-1 text-[#F0C38E] hover:text-[#221F39] hover:bg-[#F0C38E]"
                   onClick={() => toggleDesktopSection(navItems.title)}
                 >
                   {navItems.title}
@@ -148,8 +148,8 @@ const Navbar = () => {
                 </Button>
 
                 <Button
-                  variant="ghost"
-                  className="flex items-center gap-1 text-[#F0C38E] hover:text-[#221F39] hover:bg-[#F0C38E]"
+                  variant="default"
+                  className="flex font-semibold items-center gap-1 text-[#221F39] hover:text-[#F0C38E] bg-[#F0C38E]"
                 >
                   <p>+91 9147714547</p>
                 </Button>
