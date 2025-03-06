@@ -14,7 +14,8 @@ import type { Course } from "@/lib/CourseData";
 const enrollmentSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
   lastName: z.string().min(2, "Last name must be at least 2 characters"),
-  address: z.string().min(5, "Address must be at least 5 characters"),
+  course: z.string().min(5, "Course name is readOnly"),
+  address: z.string().min(10, "Address must be at least 10 characters"),
   pincode: z.string().regex(/^\d{6}$/, "Invalid Pincode (6 digits required)"),
   phone: z
     .string()
@@ -22,7 +23,7 @@ const enrollmentSchema = z.object({
   email: z.string().email("Invalid Email Address"),
 });
 
-type EnrollmentFormValues = z.infer<typeof enrollmentSchema>;
+export type EnrollmentFormValues = z.infer<typeof enrollmentSchema>;
 
 interface EnrollmentFormProps {
   course: Course | typeof import("@/lib/CourseData").diplomaCourse;
@@ -127,7 +128,10 @@ const FormContent: React.FC<
         </Button>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form
+        onSubmit={handleSubmit((data) => onSubmit(data))}
+        className="space-y-4"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="firstName" className="text-[#F0C38E]">
@@ -225,6 +229,7 @@ const FormContent: React.FC<
           <Input
             id="course"
             value={course.name}
+            {...register("course")}
             readOnly
             className="bg-black/70 border-[#9370DB]/50 text-white cursor-not-allowed"
           />

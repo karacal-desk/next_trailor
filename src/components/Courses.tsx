@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-import EnrollmentForm from "./EnrollmentForm";
+import EnrollmentForm, { EnrollmentFormValues } from "./EnrollmentForm";
 import SyllabusModal from "./SyllabusModal";
 import { courses, diplomaCourse, type Course } from "@/lib/CourseData";
 import { Progress } from "@/components/ui/progress";
@@ -79,15 +79,28 @@ const Courses = () => {
     setShowSyllabus(courseName === showSyllabus ? null : courseName);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (data: EnrollmentFormValues) => {
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/enroll", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error("Failed to submit enrollment");
+    } catch (error) {
+      toast.error("Failed to submit enrollment. Please try again.");
+      console.error("Enrollment Submission Error:", error);
+    } finally {
       setIsSubmitting(false);
       setSelectedCourse(null);
       toast.success("Enrollment Successful!", {
-        description: `You have successfully enrolled for ${selectedCourse}, check your email for confirmation`,
+        description: `You have successfully enrolled for ${selectedCourse}, Admin Will Connect Shortly, Stay Tuned`,
       });
-    }, 3000);
+    }
   };
 
   const handleCancel = () => {
