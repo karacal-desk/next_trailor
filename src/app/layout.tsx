@@ -45,9 +45,9 @@ export default function RootLayout({
       </head>
       <body className="antialiased flex flex-col min-h-screen">
         <Navbar />
+        {children}
         <SpeedInsights />
         <Analytics />
-        {children}
         <Footer />
       </body>
     </html>
