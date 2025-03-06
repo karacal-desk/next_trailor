@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-6">
+            <ul className="space-y-8">
               <li>
                 <Link
                   href="#courses"
@@ -19,18 +19,19 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="#"
-                  className=" p-2 rounded-sm hover:bg-white hover:text-primary  transition-colors"
+                  href="#about"
+                  className="  p-2 rounded-sm bg-white text-primary md:text-white md:bg-transparent hover:bg-white hover:text-primary  transition-colors"
                 >
                   About Us
                 </Link>
               </li>
+
               <li>
                 <Link
-                  href="#"
-                  className=" p-2 rounded-sm hover:bg-white hover:text-primary  transition-colors"
+                  href="#tools"
+                  className="  p-2 rounded-sm bg-white text-primary md:text-white md:bg-transparent hover:bg-white hover:text-primary  transition-colors"
                 >
-                  Contact Us
+                  Given Tools
                 </Link>
               </li>
             </ul>

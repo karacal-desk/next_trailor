@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 interface Tools {
@@ -17,8 +18,57 @@ const toolSet: Tools[] = [
 ];
 
 const Tools = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      sectionRef.current.id = "tools";
+    }
+
+    const handleHashChange = () => {
+      if (window.location.hash === "#tools" && sectionRef.current) {
+        const headerHeight = 80;
+        const yOffset = -headerHeight;
+        const y =
+          sectionRef.current.getBoundingClientRect().top +
+          window.pageYOffset +
+          yOffset;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    if (window.location.hash === "#tools") {
+      setTimeout(handleHashChange, 100);
+    }
+
+    document.querySelectorAll('a[href="#tools"]').forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (sectionRef.current) {
+          const headerHeight = 80;
+          const yOffset = -headerHeight;
+          const y =
+            sectionRef.current.getBoundingClientRect().top +
+            window.pageYOffset +
+            yOffset;
+
+          window.scrollTo({ top: y, behavior: "smooth" });
+
+          window.history.pushState(null, "", "#tools");
+        }
+      });
+    });
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
   return (
-    <section className="py-20 bg-[#111213] backdrop-blur-sm">
+    <section ref={sectionRef} className="py-20 bg-[#111213] backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-4xl font-bold mb-12 text-center text-[#F0C38E] drop-shadow-[0_0_10px_#F0C38E] sm:drop-shadow-[0_0_15px_#F0C38E]"

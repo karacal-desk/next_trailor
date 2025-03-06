@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle, Eye, X } from "lucide-react";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,6 +10,56 @@ import Link from "next/link";
 
 const About = () => {
   const [showCertificate, setShowCertificate] = useState(false);
+
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      sectionRef.current.id = "about";
+    }
+
+    const handleHashChange = () => {
+      if (window.location.hash === "#about" && sectionRef.current) {
+        const headerHeight = 80;
+        const yOffset = -headerHeight;
+        const y =
+          sectionRef.current.getBoundingClientRect().top +
+          window.pageYOffset +
+          yOffset;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    if (window.location.hash === "#about") {
+      setTimeout(handleHashChange, 100);
+    }
+
+    document.querySelectorAll('a[href="#about"]').forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (sectionRef.current) {
+          const headerHeight = 80;
+          const yOffset = -headerHeight;
+          const y =
+            sectionRef.current.getBoundingClientRect().top +
+            window.pageYOffset +
+            yOffset;
+
+          window.scrollTo({ top: y, behavior: "smooth" });
+
+          window.history.pushState(null, "", "#about");
+        }
+      });
+    });
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
 
   const features = [
     {
@@ -35,7 +85,7 @@ const About = () => {
   ];
 
   return (
-    <section className="py-20 bg-[#111213] backdrop-blur-sm">
+    <section ref={sectionRef} className="py-20 bg-[#111213] backdrop-blur-sm">
       <div className="container mx-auto px-4 flex flex-col items-center">
         <motion.h2
           className="text-4xl font-bold mb-12 text-center text-[#F0C38E] drop-shadow-[0_0_10px_#F0C38E] sm:drop-shadow-[0_0_15px_#F0C38E]"
