@@ -1,5 +1,5 @@
 import {
-  // UserEmailTemplate,
+  //UserEmailTemplate,
   AdminEmailTemplate,
 } from "@/components/EmailTemplate";
 import { Resend } from "resend";

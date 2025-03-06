@@ -17,13 +17,14 @@ interface AdminEmailProps {
 
 export const UserEmailTemplate: FC<Readonly<UserEmailProps>> = ({
   firstName,
+  course,
 }) => (
   <div>
     <h1>Dear {firstName},</h1>
     <p>
-      Thank you for enrolling in our institute! Your enrollment has been
-      submitted and confirmed. An authority will be reaching out to you shortly.
-      Stay tuned!
+      Thank you for enrolling {course} in our institute! Your enrollment has
+      been submitted and confirmed. An authority will be reaching out to you
+      shortly. Stay tuned!
     </p>
     <p>Best regards,</p>
     <p>
