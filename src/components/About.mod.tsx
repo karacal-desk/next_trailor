@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle, Eye, X } from "lucide-react";
+import { Briefcase, CheckCircle, Eye, X } from "lucide-react";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -141,10 +141,17 @@ const About = () => {
               </p>
               <Button
                 onClick={() => setShowGallery(true)}
-                className="bg-[#F0C38E] text-black hover:bg-[#F0C38E]/80"
+                className="bg-[#F0C38E] text-black hover:bg-[#F0C38E]/80 mb-4"
               >
                 <Eye className="w-4 h-4 mr-2" /> Checkout Gallery
               </Button>
+
+              <Link
+                href={"#career"}
+                className="flex flex-row  gap-1 items-center  bg-[#F0C38E] hover:bg-[#F0C38E]/80 text-black text-md    w-fit px-4 py-1 rounded-md"
+              >
+                <Briefcase className="w-4 h-4 mr-2" /> Career Options
+              </Link>
             </CardContent>
           </div>
           <div className="flex flex-col gap-5 justify-center items-center md:w-1/3 p-4">

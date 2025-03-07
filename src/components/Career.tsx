@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { CardContent } from "@/components/ui/card";
 import Image from "next/image";
@@ -6,6 +8,58 @@ import ContactForm from "./ContactForm";
 import { Button } from "./ui/button";
 
 const Career = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [selectedCareer, setSelectedCareer] = useState<string | null>(null);
+  const [showContactForm, setShowContactForm] = useState(false);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      sectionRef.current.id = "career";
+    }
+
+    const handleHashChange = () => {
+      if (window.location.hash === "#career" && sectionRef.current) {
+        const headerHeight = 80;
+        const yOffset = -headerHeight;
+        const y =
+          sectionRef.current.getBoundingClientRect().top +
+          window.pageYOffset +
+          yOffset;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    if (window.location.hash === "#career") {
+      setTimeout(handleHashChange, 100);
+    }
+
+    document.querySelectorAll('a[href="#career"]').forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (sectionRef.current) {
+          const headerHeight = 80;
+          const yOffset = -headerHeight;
+          const y =
+            sectionRef.current.getBoundingClientRect().top +
+            window.pageYOffset +
+            yOffset;
+
+          window.scrollTo({ top: y, behavior: "smooth" });
+
+          window.history.pushState(null, "", "#career");
+        }
+      });
+    });
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
   const opportunities = [
     { title: "Open your own boutique", icon: "/own_boutique.png" },
     { title: "Become a fashion designer", icon: "/fashion_designer.png" },
@@ -15,8 +69,18 @@ const Career = () => {
     { title: "Start an online clothing store", icon: "/online_store.png" },
   ];
 
+  const handleContactClick = (careerTitle: string) => {
+    setSelectedCareer(careerTitle);
+    setShowContactForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setShowContactForm(false);
+    setSelectedCareer(null);
+  };
+
   return (
-    <section className="py-20 bg-[#111213] backdrop-blur-sm">
+    <section ref={sectionRef} className="py-20 bg-[#111213] backdrop-blur-sm">
       <div className="container mx-auto px-4 text-center">
         <motion.h2
           className="text-4xl font-bold mb-12 text-center text-[#F0C38E] drop-shadow-[0_0_10px_#F0C38E] sm:drop-shadow-[0_0_15px_#F0C38E]"
@@ -61,6 +125,7 @@ const Career = () => {
                 <Button
                   variant="default"
                   className="flex ml-2 font-semibold items-center gap-1 text-[#221F39] hover:text-[#F0C38E] bg-[#F0C38E]"
+                  onClick={() => handleContactClick(opportunity.title)}
                 >
                   <p>Connect With Us</p>
                 </Button>
@@ -68,7 +133,12 @@ const Career = () => {
             </motion.div>
           ))}
         </div>
-        <ContactForm />
+        {showContactForm && (
+          <ContactForm
+            selectedCareer={selectedCareer}
+            onClose={handleCloseForm}
+          />
+        )}
       </div>
     </section>
   );

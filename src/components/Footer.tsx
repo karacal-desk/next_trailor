@@ -41,18 +41,10 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="#"
+                  href="#career"
                   className=" p-2 rounded-sm hover:bg-white hover:text-primary  transition-colors"
                 >
-                  Jobs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className=" p-2 rounded-sm hover:bg-white hover:text-primary  transition-colors"
-                >
-                  Loan Facility
+                  Career
                 </Link>
               </li>
 
