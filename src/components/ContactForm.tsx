@@ -26,9 +26,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
+import { motion } from "framer-motion";
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  name: z.string().min(5, { message: "Name must be at least 5 characters." }),
   phone: z.string().min(10, { message: "Please enter a valid phone number." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   subscribe: z.boolean().default(false),
@@ -98,10 +99,16 @@ export default function ContactForm() {
           >
             {submissionStatus === "submitted"
               ? "Thanks for Contacting us"
-              : "Contact Us"}
+              : "Maybe There is another Reason"}
           </Button>
         ) : (
-          <Card className="w-full bg-black/70 backdrop-blur-sm text-white border-[#F0C38E] max-w-md mx-auto shadow-lg animate-in fade-in zoom-in duration-300">
+          <motion.div
+            className=" text-left bg-black/50 shadow-inner shadow-[#F0C38E]/70 rounded-md backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 2 * 0.1, duration: 0.6 }}
+          >
             <CardHeader>
               <CardTitle className="text-xl font-semibold text-[#F0C38E] outline-none">
                 Contact Form
@@ -128,7 +135,7 @@ export default function ContactForm() {
                           <Input
                             placeholder="Enter your name"
                             {...field}
-                            className="bg-black/50 focus:border-[#9370DB]/50 text-white border-[#F0C38E]"
+                            className="bg-black/50 border-[#9370DB]/50  text-white "
                           />
                         </FormControl>
                         <FormMessage />
@@ -148,7 +155,7 @@ export default function ContactForm() {
                           <Input
                             placeholder="Enter your phone number"
                             {...field}
-                            className="bg-black/50 focus:border-[#9370DB]/50 text-white border-[#F0C38E]"
+                            className="bg-black/50 border-[#9370DB]/50  text-white "
                           />
                         </FormControl>
                         <FormMessage />
@@ -166,7 +173,7 @@ export default function ContactForm() {
                         </FormLabel>
                         <FormControl>
                           <Input
-                            className="bg-black/50 focus:border-[#9370DB]/50 text-white border-[#F0C38E]"
+                            className="bg-black/50 border-[#9370DB]/50  text-white "
                             placeholder="Enter your email"
                             type="email"
                             {...field}
@@ -288,7 +295,7 @@ export default function ContactForm() {
                 </form>
               </Form>
             </CardContent>
-          </Card>
+          </motion.div>
         )}
       </div>
     </section>

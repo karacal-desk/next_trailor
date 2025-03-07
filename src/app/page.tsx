@@ -6,8 +6,7 @@ import HeroSection from "@/components/HeroSection.mod";
 import About from "@/components/About.mod";
 import Courses from "@/components/Courses";
 import Tools from "@/components/Tools";
-import Jobs from "@/components/Jobs";
-import ContactForm from "@/components/ContactForm";
+import Career from "@/components/Career";
 
 const Page = () => {
   const [position, setPosition] = useState<"top-center" | "bottom-right">(
@@ -35,8 +34,7 @@ const Page = () => {
       <About />
       <Courses />
       <Tools />
-      <Jobs />
-      <ContactForm />
+      <Career />
       <Toaster position={position} richColors />
     </main>
   );

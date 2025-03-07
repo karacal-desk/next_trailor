@@ -2,8 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import ContactForm from "./ContactForm";
+import { Button } from "./ui/button";
 
-const Jobs = () => {
+const Career = () => {
   const opportunities = [
     { title: "Open your own boutique", icon: "/own_boutique.png" },
     { title: "Become a fashion designer", icon: "/fashion_designer.png" },
@@ -45,7 +47,7 @@ const Jobs = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
             >
-              <CardContent className="flex flex-col text-white items-center justify-center h-full p-6">
+              <CardContent className="flex flex-col gap-4 text-white items-center justify-center h-full p-6">
                 <div className="relative w-24 h-24">
                   <Image
                     src={opportunity.icon || "/placeholder.svg"}
@@ -56,13 +58,20 @@ const Jobs = () => {
                   />
                 </div>
                 <h3 className="font-semibold text-lg">{opportunity.title}</h3>
+                <Button
+                  variant="default"
+                  className="flex ml-2 font-semibold items-center gap-1 text-[#221F39] hover:text-[#F0C38E] bg-[#F0C38E]"
+                >
+                  <p>Connect With Us</p>
+                </Button>
               </CardContent>
             </motion.div>
           ))}
         </div>
+        <ContactForm />
       </div>
     </section>
   );
 };
 
-export default Jobs;
+export default Career;

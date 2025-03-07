@@ -10,6 +10,8 @@ import Link from "next/link";
 
 const About = () => {
   const [showCertificate, setShowCertificate] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -84,6 +86,8 @@ const About = () => {
     },
   ];
 
+  const galleryImages = ["/images/image1.jpeg", "/images/image2.jpeg"];
+
   return (
     <section ref={sectionRef} className="py-20 bg-[#111213] backdrop-blur-sm">
       <div className="container mx-auto px-4 flex flex-col items-center">
@@ -136,36 +140,45 @@ const About = () => {
                 <b className="text-[#F0C38E]">successful profession.</b>
               </p>
               <Button
-                onClick={() => setShowCertificate(true)}
+                onClick={() => setShowGallery(true)}
                 className="bg-[#F0C38E] text-black hover:bg-[#F0C38E]/80"
               >
-                <Eye className="w-4 h-4 mr-2" /> Preview Sample Certificate
+                <Eye className="w-4 h-4 mr-2" /> Checkout Gallery
               </Button>
             </CardContent>
           </div>
           <div className="flex flex-col gap-5 justify-center items-center md:w-1/3 p-4">
+            <Link
+              href="https://aicvt.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col gap-4 items-center justify-center"
+            >
+              <Image
+                src="/aicvt.png"
+                alt="AICVT logo"
+                width={100}
+                height={100}
+              />
+              <p className="mb-4 font-semibold text-[#F0C38E] text-center">
+                <span className="font-sans text-gray-400">
+                  affiliated with{" "}
+                </span>
+                All India Council For Vocational Training
+              </p>
+            </Link>
             <div className="h-32 bg-gray-300 w-full rounded-lg flex items-center justify-center">
               <div className="relative w-full h-32 bg-gray-300 rounded-lg flex items-center justify-center">
-                <Link
-                  href="https://aicvt.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Button onClick={() => setShowCertificate(true)}>
                   <Image
-                    src="/aicvt.png"
-                    alt="aictv logo"
+                    src="/sample.jpeg"
+                    alt="sample certificate"
                     fill
                     style={{ objectFit: "contain" }}
                     quality={80}
                   />
-                </Link>
+                </Button>
               </div>
-            </div>
-
-            <div>
-              <p className="mb-4 font-semibold text-[#F0C38E]">
-                All India Council For Vocational Training
-              </p>
             </div>
           </div>
         </motion.div>
@@ -226,6 +239,79 @@ const About = () => {
                 className="bg-[#F0C38E] text-black hover:bg-[#F0C38E]/80"
               >
                 Close Preview
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Gallery Preview Modal */}
+      {showGallery && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+          <div className="bg-white p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
+            <h3 className="text-2xl font-bold mb-4 text-gray-800 flex justify-between items-center">
+              <span>Gallery</span>
+              <Button
+                onClick={() => setShowGallery(false)}
+                variant="ghost"
+                className="h-8 w-8 p-0 bg-black text-white rounded-full"
+              >
+                <span className="sr-only">Close</span>
+                <X className="h-6 w-6" />
+              </Button>
+            </h3>
+            <div className="relative w-full h-[60vh] mb-6">
+              <Image
+                src={galleryImages[currentImageIndex] || "/placeholder.svg"}
+                alt={`Gallery image ${currentImageIndex + 1}`}
+                fill
+                style={{ objectFit: "contain" }}
+                quality={100}
+                className="rounded-md"
+              />
+            </div>
+            <div className="flex justify-center gap-2 mb-4">
+              {galleryImages.map((_, index) => (
+                <Button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`h-3 w-3 p-3 rounded-full flex items-center justify-center ${
+                    currentImageIndex === index
+                      ? "bg-[#F0C38E] text-black"
+                      : "bg-gray-300 text-gray-600"
+                  }`}
+                  aria-label={`View image ${index + 1}`}
+                >
+                  {index + 1}
+                </Button>
+              ))}
+            </div>
+            <div className="flex justify-between">
+              <Button
+                onClick={() =>
+                  setCurrentImageIndex(
+                    (prev) =>
+                      (prev - 1 + galleryImages.length) % galleryImages.length,
+                  )
+                }
+                className="bg-[#F0C38E] text-black hover:bg-[#F0C38E]/80"
+              >
+                Previous
+              </Button>
+              <Button
+                onClick={() => setShowGallery(false)}
+                className="bg-gray-800 text-white hover:bg-gray-700"
+              >
+                Close Gallery
+              </Button>
+              <Button
+                onClick={() =>
+                  setCurrentImageIndex(
+                    (prev) => (prev + 1) % galleryImages.length,
+                  )
+                }
+                className="bg-[#F0C38E] text-black hover:bg-[#F0C38E]/80"
+              >
+                Next
               </Button>
             </div>
           </div>
