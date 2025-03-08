@@ -10,6 +10,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import type { Course } from "@/lib/CourseData";
+import { Progress } from "./ui/progress";
 
 const enrollmentSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -31,6 +32,7 @@ interface EnrollmentFormProps {
   onCancel: () => void;
   isOpen: boolean;
   isSubmitting: boolean;
+  progress: number;
 }
 
 const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
@@ -39,6 +41,7 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
   onCancel,
   isOpen,
   isSubmitting,
+  progress,
 }) => {
   const headerRef = useRef<HTMLHeadingElement | null>(null);
 
@@ -68,6 +71,7 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
           onCancel={onCancel}
           headerRef={headerRef}
           isSubmitting={isSubmitting}
+          progress={progress}
         />
       </div>
 
@@ -86,6 +90,7 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
               onCancel={onCancel}
               headerRef={headerRef}
               isSubmitting={isSubmitting}
+              progress={progress}
             />
           </div>
         </div>
@@ -98,7 +103,7 @@ const FormContent: React.FC<
   Omit<EnrollmentFormProps, "isOpen"> & {
     headerRef: React.RefObject<HTMLHeadingElement>;
   }
-> = ({ course, onSubmit, onCancel, headerRef, isSubmitting }) => {
+> = ({ course, onSubmit, onCancel, headerRef, isSubmitting, progress }) => {
   const {
     register,
     handleSubmit,
@@ -242,6 +247,19 @@ const FormContent: React.FC<
         >
           {isSubmitting ? "Submitting..." : "Submit Enrollment"}
         </Button>
+
+        {isSubmitting && (
+          <div className="w-full">
+            <Progress
+              value={progress}
+              className={`h-2 transition-all duration-300 ${
+                progress < 50
+                  ? "bg-[#F0C38E] shadow-[#F0C38E]"
+                  : "bg-[#9370DB] shadow-[#9370DB]"
+              } shadow-lg`}
+            />
+          </div>
+        )}
       </form>
     </>
   );

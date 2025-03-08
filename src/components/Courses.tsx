@@ -20,7 +20,9 @@ import { toast } from "sonner";
 const Courses = () => {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
   const [showSyllabus, setShowSyllabus] = useState<string | null>(null);
+  const [progress, setProgress] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -82,6 +84,16 @@ const Courses = () => {
   const handleSubmit = async (data: EnrollmentFormValues) => {
     setIsSubmitting(true);
     try {
+      const interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(interval);
+            return 100;
+          }
+          return prev + 10;
+        });
+      }, 150);
+
       const response = await fetch("/api/enroll", {
         method: "POST",
         headers: {
@@ -91,12 +103,16 @@ const Courses = () => {
       });
 
       if (!response.ok) throw new Error("Failed to submit enrollment");
+      clearInterval(interval);
+      setProgress(100);
     } catch (error) {
+      setProgress(0);
       toast.error("Failed to submit enrollment. Please try again.");
       console.error("Enrollment Submission Error:", error);
     } finally {
       setIsSubmitting(false);
       setSelectedCourse(null);
+      setProgress(0);
       toast.success("Enrollment Successful!", {
         description: `You have successfully enrolled for ${selectedCourse}, Admin Will Connect Shortly, Stay Tuned`,
       });
@@ -299,6 +315,7 @@ const Courses = () => {
                 onCancel={handleCancel}
                 isOpen={!!selectedCourse}
                 isSubmitting={isSubmitting}
+                progress={progress}
               />
             </motion.div>
           </motion.div>

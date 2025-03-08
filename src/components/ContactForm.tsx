@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -58,6 +58,9 @@ export default function ContactForm({
     "initial" | "submitted"
   >("initial");
 
+  const formHeaderRef = useRef<HTMLHeadingElement>(null);
+  const formSectionRef = useRef<HTMLElement>(null);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -72,6 +75,19 @@ export default function ContactForm({
       loanFacility: false,
     },
   });
+
+  useEffect(() => {
+    if (isExpanded && formHeaderRef.current && formSectionRef.current) {
+      // Focus the form header
+      formHeaderRef.current.focus();
+
+      // Scroll to the form section with smooth animation
+      formSectionRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [isExpanded]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
@@ -119,8 +135,11 @@ export default function ContactForm({
   };
 
   return (
-    <section className="py-20 bg-[#111213] backdrop-blur-sm">
-      <div className="flex justify-center items-center min-h-[100px] p-4">
+    <section
+      ref={formSectionRef}
+      className="py-20 w-full bg-[#111213] backdrop-blur-sm"
+    >
+      <div className="flex w-full md:w-[80%] mx-auto justify-center items-center min-h-[100px] ">
         {!isExpanded ? (
           <Button
             variant="default"
@@ -134,18 +153,25 @@ export default function ContactForm({
           </Button>
         ) : (
           <motion.div
-            className="text-left bg-black/50 shadow-inner shadow-[#F0C38E]/70 rounded-md backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            className="w-full text-left bg-black/50 shadow-inner shadow-[#F0C38E]/70 rounded-md backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 2 * 0.1, duration: 0.6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.6 }}
           >
             <CardHeader>
-              <CardTitle className="text-xl font-semibold text-[#F0C38E] outline-none">
+              <CardTitle
+                ref={formHeaderRef}
+                tabIndex={-1}
+                className="text-xl font-semibold text-[#F0C38E] outline-none focus:ring-2 focus:ring-[#F0C38E] focus:ring-opacity-50 rounded-sm"
+              >
                 Contact Form
               </CardTitle>
               <CardDescription className="text-gray-400 font-semibold text-md">
                 Fill out the form below to get in touch with us.
+                <p className="inline text-[#F0C38E]">
+                  (Cancel or Submit existing form before creating another)
+                </p>
               </CardDescription>
             </CardHeader>
             <CardContent>

@@ -55,12 +55,12 @@ const HeroSection = () => {
                   Start Learning
                 </Button>
               </Link>
-              <Link href="#courses">
+              <Link href="#career">
                 <Button
                   variant="outline"
                   className="text-md font-semibold w-full bg-[#9370DB]/10 text-white border-[#9370DB] hover:text-[#9370DB] shadow-lg shadow-[#9370DB]/30 transition-all duration-300"
                 >
-                  Explore Courses
+                  Explore Careers
                 </Button>
               </Link>
             </motion.div>
