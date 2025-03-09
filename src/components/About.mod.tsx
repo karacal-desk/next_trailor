@@ -7,6 +7,7 @@ import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const About = () => {
   const [showCertificate, setShowCertificate] = useState(false);
@@ -14,6 +15,7 @@ const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const sectionRef = useRef<HTMLElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (sectionRef.current) {
@@ -146,12 +148,12 @@ const About = () => {
                 <Eye className="w-4 h-4 mr-2" /> Checkout Gallery
               </Button>
 
-              <Link
-                href={"#career"}
-                className="flex flex-row  gap-1 items-center  bg-[#F0C38E] hover:bg-[#F0C38E]/80 text-black text-md    w-fit px-4 py-1 rounded-md"
+              <Button
+                onClick={() => router.push("#career")}
+                className="flex flex-row  gap-1 items-center  bg-[#F0C38E] hover:bg-[#F0C38E]/80 text-black     "
               >
                 <Briefcase className="w-4 h-4 mr-2" /> Career Options
-              </Link>
+              </Button>
             </CardContent>
           </div>
           <div className="flex flex-col gap-5 justify-center items-center md:w-1/3 p-4">

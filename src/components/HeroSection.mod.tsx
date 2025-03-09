@@ -87,10 +87,10 @@ const HeroSection = () => {
 
           <motion.div
             className="relative flex justify-center items-center"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 150 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
             <div className="absolute inset-0 rounded-full bg-[#F0C38E]/20 blur-3xl" />
             <Image

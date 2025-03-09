@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "ASHAA Dress Designing School",
+    name: "ASHAA Dress Designing Institute",
     short_name: "ASHAA",
     description:
-      "Learn tailoring and dress designing at ASHAA Dress Designing School",
+      "Learn tailoring and dress designing at ASHAA Dress Designing Institute",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

@@ -87,7 +87,7 @@ const Navbar = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="fixed bg-[#221F39] text-[#F0C38E] z-10 w-full shadow-lg"
       >
-        <nav className="container mx-auto px-2">
+        <motion.nav className="container mx-auto px-2">
           <div className="flex justify-between items-center h-20">
             <Link
               href="/"
@@ -199,7 +199,7 @@ const Navbar = () => {
               )}
             </Button>
           </div>
-        </nav>
+        </motion.nav>
       </motion.div>
 
       {/* Mobile Menu */}

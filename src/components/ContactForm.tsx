@@ -123,7 +123,7 @@ export default function ContactForm({
         setIsExpanded(false);
         onClose();
 
-        toast.success("Form Submitted Successful!", {
+        toast.success("Contact Details Submitted Successfully!", {
           description: `You have successfully contacted for ${selectedCareer}, Admin Will Connect Shortly, Stay Tuned`,
         });
       }, 500);

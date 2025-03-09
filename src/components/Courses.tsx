@@ -148,10 +148,10 @@ const Courses = () => {
           <DropdownMenuTrigger asChild>
             <Button
               variant="default"
-              className="w-full bg-black/50   border-none justify-between"
+              className="w-full text-[#221F39] hover:text-[#F0C38E] bg-[#F0C38E]   border-none justify-between"
             >
-              <strong className="text-[#F0C38E]">Fee Details</strong>
-              <ChevronDown className="h-8 w-8 opacity-100 text-[#F0C38E]" />
+              <strong className="">Fee Details</strong>
+              <ChevronDown className="h-8 w-8 opacity-100  font-bold" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -211,10 +211,10 @@ const Courses = () => {
           <DropdownMenuTrigger asChild>
             <Button
               variant="default"
-              className="w-full bg-black/50   border-none justify-between"
+              className="w-full text-[#221F39] hover:text-[#F0C38E] bg-[#F0C38E]   border-none justify-between"
             >
-              <strong className="text-[#F0C38E]">Fee Details</strong>
-              <ChevronDown className="h-8 w-8 opacity-100 text-[#F0C38E]" />
+              <strong className="">Fee Details</strong>
+              <ChevronDown className="h-8 w-8 opacity-100  font-bold" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
