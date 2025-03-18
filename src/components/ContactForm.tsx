@@ -103,10 +103,18 @@ export default function ContactForm({
           }
           return prev + 10;
         });
-      }, 200);
+      }, 1000);
 
       // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const response = await fetch("/api/career", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) throw new Error("Failed to submit enrollment");
 
       clearInterval(interval);
       setProgress(100);
@@ -116,17 +124,14 @@ export default function ContactForm({
       console.error("Form submission failed:", error);
       setSubmissionStatus("initial");
     } finally {
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setProgress(0);
-        form.reset();
-        setIsExpanded(false);
-        onClose();
-
-        toast.success("Contact Details Submitted Successfully!", {
-          description: `You have successfully contacted for ${selectedCareer}, Admin Will Connect Shortly, Stay Tuned`,
-        });
-      }, 500);
+      setIsSubmitting(false);
+      setProgress(0);
+      form.reset();
+      setIsExpanded(false);
+      onClose();
+      toast.success("Contact Details Submitted Successfully!", {
+        description: `You have successfully contacted for ${selectedCareer}, Admin Will Connect Shortly, Stay Tuned`,
+      });
     }
   }
 
@@ -375,8 +380,9 @@ export default function ContactForm({
                               Loan Facility
                             </FormLabel>
                             <FormDescription className="font-semibold text-sm">
-                              Get access to flexible loan facilities with easy
-                              repayment options. Apply now.
+                              Get access to flexible loan facilities under
+                              <strong>MSME Guidance</strong> with easy repayment
+                              options. Apply now.
                             </FormDescription>
                           </div>
                           <FormControl>

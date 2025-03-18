@@ -1,5 +1,5 @@
-import { AdminEmailTemplate } from "@/components/templates/admin.admission.template";
-import { UserEmailTemplate } from "@/components/templates/user.admission.template";
+import { AdminEmailTemplate } from "@/components/templates/admin.career.template";
+import { UserEmailTemplate } from "@/components/templates/user.career.template";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
@@ -10,17 +10,30 @@ export async function GET() {
 export async function POST(req: Request) {
   console.log("getting the form formData");
   const formData = await req.json();
-  const { firstName, lastName, course, address, pincode, phone, email } =
-    formData;
+  const {
+    name,
+    phone,
+    email,
+    careerOption,
+    message,
+    subscribe,
+    getTips,
+    sellCreation,
+    loanFacility,
+  } = formData;
 
   try {
     const userResponse = await resend.emails.send({
       from: "ASHAA Institute <admin@emails.ashaafoundation.in>",
       to: [email],
-      subject: "Enrollment Confirmation",
+      subject: "Contact Form Submission Confirmation",
       react: UserEmailTemplate({
-        firstName,
-        course,
+        name,
+        careerOption,
+        subscribe,
+        getTips,
+        sellCreation,
+        loanFacility,
       }),
     });
 
@@ -34,15 +47,17 @@ export async function POST(req: Request) {
     const adminResponse = await resend.emails.send({
       from: "ASHAA Institute <admin@emails.ashaafoundation.in>",
       to: ["ashaafoundation25@gmail.com"],
-      subject: "New Enrollment Notification",
+      subject: "New Contact Notification",
       react: AdminEmailTemplate({
-        firstName,
-        lastName,
-        course,
-        address,
-        pincode,
+        name,
         phone,
         email,
+        careerOption,
+        message,
+        subscribe,
+        getTips,
+        sellCreation,
+        loanFacility,
       }),
     });
 
