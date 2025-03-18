@@ -92,7 +92,7 @@ const Courses = () => {
           }
           return prev + 10;
         });
-      }, 150);
+      }, 500);
 
       const response = await fetch("/api/enroll", {
         method: "POST",

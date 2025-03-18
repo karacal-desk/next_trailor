@@ -7,7 +7,6 @@ import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 const About = () => {
   const [showCertificate, setShowCertificate] = useState(false);
@@ -15,7 +14,6 @@ const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const sectionRef = useRef<HTMLElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
     if (sectionRef.current) {
@@ -148,12 +146,11 @@ const About = () => {
                 <Eye className="w-4 h-4 mr-2" /> Checkout Gallery
               </Button>
 
-              <Button
-                onClick={() => router.push("#career")}
-                className="flex flex-row  gap-1 items-center  bg-[#F0C38E] hover:bg-[#F0C38E]/80 text-black     "
-              >
-                <Briefcase className="w-4 h-4 mr-2" /> Career Options
-              </Button>
+              <Link href={"#career"} className="block max-w-fit">
+                <Button className="flex flex-row  gap-1 items-center  bg-[#F0C38E] hover:bg-[#F0C38E]/80 text-black     ">
+                  <Briefcase className="w-4 h-4 mr-2" /> Career Options
+                </Button>
+              </Link>
             </CardContent>
           </div>
           <div className="flex flex-col gap-5 justify-center items-center md:w-1/3 p-4">
@@ -255,8 +252,8 @@ const About = () => {
       )}
       {/* Gallery Preview Modal */}
       {showGallery && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
-          <div className="bg-white p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 ">
+          <div className="bg-white p-4 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
             <h3 className="text-2xl font-bold mb-4 text-gray-800 flex justify-between items-center">
               <span>Gallery</span>
               <Button
@@ -305,12 +302,6 @@ const About = () => {
                 className="bg-[#F0C38E] text-black hover:bg-[#F0C38E]/80"
               >
                 Previous
-              </Button>
-              <Button
-                onClick={() => setShowGallery(false)}
-                className="bg-gray-800 text-white hover:bg-gray-700"
-              >
-                Close Gallery
               </Button>
               <Button
                 onClick={() =>

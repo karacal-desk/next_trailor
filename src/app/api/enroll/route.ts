@@ -1,7 +1,5 @@
-import {
-  //UserEmailTemplate,
-  AdminEmailTemplate,
-} from "@/components/EmailTemplate";
+import { AdminEmailTemplate } from "@/components/templates/admin.template";
+import { UserEmailTemplate } from "@/components/templates/user.template";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
@@ -16,26 +14,26 @@ export async function POST(req: Request) {
     formData;
 
   try {
-    //const userResponse = await resend.emails.send({
-    //  from: "ASHAA-Tailor Institute <onboarding@resend.dev>",
-    //  to: [email],
-    //  subject: "Enrollment Confirmation",
-    //  react: UserEmailTemplate({
-    //    firstName,
-    //    course,
-    //  }),
-    //});
-    //
-    //console.log("User Email Response:", userResponse);
-    //
-    //if (userResponse.error) {
-    //  console.error("User Email Error:", userResponse.error);
-    //  return Response.json({ userError: userResponse.error }, { status: 500 });
-    //}
+    const userResponse = await resend.emails.send({
+      from: "ASHAA Institute <admin@emails.ashaafoundation.in>",
+      to: [email],
+      subject: "Enrollment Confirmation",
+      react: UserEmailTemplate({
+        firstName,
+        course,
+      }),
+    });
+
+    console.log("User Email Response:", userResponse);
+
+    if (userResponse.error) {
+      console.error("User Email Error:", userResponse.error);
+      return Response.json({ userError: userResponse.error }, { status: 500 });
+    }
 
     const adminResponse = await resend.emails.send({
-      from: "ASHAA-Tailor Institute <onboarding@resend.dev>",
-      to: ["kushal99mondal@gmail.com"],
+      from: "ASHAA Institute <admin@emails.ashaafoundation.in>",
+      to: ["ashaafoundation25@gmail.com"],
       subject: "New Enrollment Notification",
       react: AdminEmailTemplate({
         firstName,
