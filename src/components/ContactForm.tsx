@@ -381,8 +381,11 @@ export default function ContactForm({
                             </FormLabel>
                             <FormDescription className="font-semibold text-sm">
                               Get access to flexible loan facilities under
-                              <strong>MSME Guidance</strong> with easy repayment
-                              options. Apply now.
+                              <strong className="text-[#F0C38E]">
+                                {" "}
+                                MSME Guidance{" "}
+                              </strong>{" "}
+                              with easy repayment options. Apply now.
                             </FormDescription>
                           </div>
                           <FormControl>

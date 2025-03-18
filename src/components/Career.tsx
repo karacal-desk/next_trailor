@@ -6,6 +6,7 @@ import { CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
 import { Button } from "./ui/button";
+import EnhancedParagraph from "./CareerPara";
 
 const Career = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -91,17 +92,9 @@ const Career = () => {
         >
           Launch Your Fashion Career
         </motion.h2>
-        <motion.p
-          className="text-xl text-white mb-12 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          Start your professional journey in the fashion industry after
-          completing any of our courses. The possibilities are endless!
-        </motion.p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <EnhancedParagraph handleContactClick={handleContactClick} />
+        <div className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {opportunities.map((opportunity, index) => (
             <motion.div
               key={index}
