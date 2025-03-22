@@ -129,12 +129,12 @@ export const AdminEmailTemplate: FC<Readonly<AdminEmailProps>> = ({
 
             <Text style={paragraph}>Best regards,</Text>
             <Text style={signature}>
-              <strong>ASHAA Institute</strong>
+              <strong>ASHAA-Tailoring Institute</strong>
             </Text>
 
             <Section style={footer}>
               <Text style={footerText}>
-                © 2025 ASHAA Institute. All rights reserved.
+                © 2025 ASHAA-Tailoring Institute. All rights reserved.
               </Text>
               <Text style={footerText}>
                 <Link href="https://example.com">Admin Portal</Link> |{" "}

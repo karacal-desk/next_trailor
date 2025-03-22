@@ -33,7 +33,8 @@ export const UserEmailTemplate: FC<Readonly<UserEmailProps>> = ({
   <Html>
     <Head />
     <Preview>
-      Thank you for Contacting us regarding {careerOption} at ASHAA Institute!
+      Thank you for Contacting us regarding {careerOption} at ASHAA-Tailoring
+      Institute!
     </Preview>
     <Body style={main}>
       <Container style={container}>
@@ -75,7 +76,7 @@ export const UserEmailTemplate: FC<Readonly<UserEmailProps>> = ({
 
           <Text style={paragraph}>Best regards,</Text>
           <Text style={signature}>
-            <strong>ASHAA Institute</strong>
+            <strong>ASHAA-Tailoring Institute</strong>
           </Text>
 
           <Section style={footer}>

@@ -59,7 +59,7 @@ export const UserEmailTemplate: FC<Readonly<UserEmailProps>> = ({
 
           <Text style={paragraph}>Best regards,</Text>
           <Text style={signature}>
-            <strong>ASHAA Institute</strong>
+            <strong>ASHAA-Tailoring Institute</strong>
           </Text>
 
           <Section style={footer}>

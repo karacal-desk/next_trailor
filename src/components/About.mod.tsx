@@ -98,7 +98,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Why ASHAA? Best Design Institute
+          Why ASHAA? Best Tailoring Institute
         </motion.h2>
 
         {/* Main Card */}
@@ -121,8 +121,7 @@ const About = () => {
                 className="mb-4 font-semibold text-gray-400"
                 style={{ lineHeight: 2 }}
               >
-                <b className="text-[#F0C38E]">ASHAA</b> is a Dress Design
-                Institute{" "}
+                <b className="text-[#F0C38E]">ASHAA</b> is a Tailoring Institute{" "}
                 <b className="text-[#F0C38E]">
                   Government-Certified Independent Training Center
                 </b>{" "}
@@ -155,9 +154,7 @@ const About = () => {
           </div>
           <div className="flex flex-col gap-5 justify-center items-center md:w-1/3 p-4">
             <Link
-              href="https://aicvt.in"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/#about"
               className="flex flex-col gap-4 items-center justify-center"
             >
               <Image
