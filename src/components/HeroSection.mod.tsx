@@ -6,6 +6,38 @@ import Image from "next/image";
 import Link from "next/link";
 
 const HeroSection = () => {
+  const avatars = [
+    {
+      id: 1,
+      src: "/avatars/avatar1.png",
+      alt: "Student Avatar 1",
+    },
+    {
+      id: 2,
+      src: "/avatars/avatar2.png",
+      alt: "Student Avatar 2",
+    },
+    {
+      id: 3,
+      src: "/avatars/avatar3.png",
+      alt: "Student Avatar 3",
+    },
+    {
+      id: 4,
+      src: "/avatars/avatar4.png",
+      alt: "Student Avatar 4",
+    },
+    {
+      id: 5,
+      src: "/avatars/avatar5.png",
+      alt: "Student Avatar 5",
+    },
+    {
+      id: 6,
+      src: "/avatars/avatar6.png",
+      alt: "Student Avatar 6",
+    },
+  ];
   return (
     <div className="relative bg-[#111213] backdrop-blur-sm py-12 md:py-24">
       <div className="container mx-auto px-4">
@@ -72,11 +104,19 @@ const HeroSection = () => {
               transition={{ delay: 0.8, duration: 0.6 }}
             >
               <div className="flex -space-x-2">
-                {[1, 2, 3].map((num) => (
+                {avatars.map((avatar) => (
                   <div
-                    key={num}
-                    className="h-6 w-6 rounded-full border-2 border-white bg-[#F0C38E] shadow-md"
-                  />
+                    key={avatar.id}
+                    className="h-8 w-8 rounded-full border-2 border-white overflow-hidden shadow-md flex items-center justify-center"
+                  >
+                    <Image
+                      src={avatar.src || "/placeholder.svg"}
+                      alt={avatar.alt}
+                      width={32}
+                      height={32}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                 ))}
               </div>
               <p className="text-sm text-gray-400">

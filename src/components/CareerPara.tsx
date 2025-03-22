@@ -22,7 +22,6 @@ const EnhancedParagraph: React.FC<CareerParaProps> = ({
       title: "Premium Subscription",
       description:
         "Get exclusive industry insights, job alerts, and networking opportunities with our premium subscription.",
-      cta: "Subscribe Now",
     },
     {
       id: "career-tips",
@@ -30,7 +29,6 @@ const EnhancedParagraph: React.FC<CareerParaProps> = ({
       title: "Career Tips & Guidance",
       description:
         "Access personalized career advice, portfolio reviews, and mentorship from industry professionals.",
-      cta: "Explore Tips",
     },
     {
       id: "sell",
@@ -38,7 +36,6 @@ const EnhancedParagraph: React.FC<CareerParaProps> = ({
       title: "Sell Your Crafts",
       description:
         "Turn your creativity into income! List your handmade crafts, reach a wider audience, and grow your brand effortlessly.",
-      cta: "Get Your Products Reviewed",
     },
     {
       id: "msme",
@@ -46,7 +43,6 @@ const EnhancedParagraph: React.FC<CareerParaProps> = ({
       title: "MSME Guided Loan Assistance",
       description:
         "Flexible financing options with easy repayment plans to help you pursue your fashion education without financial stress.",
-      cta: "Get loan Assistance",
     },
   ];
 
@@ -131,15 +127,9 @@ const EnhancedParagraph: React.FC<CareerParaProps> = ({
                     </h3>
                   </div>
 
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-lg">
                     {features.find((f) => f.id === activePopup)?.description}
                   </p>
-
-                  <div className="pt-4">
-                    <Button className="w-full bg-[#F0C38E]/95 text-black">
-                      {features.find((f) => f.id === activePopup)?.cta}
-                    </Button>
-                  </div>
 
                   {/*activePopup === "subscription" && (
                     <div className="mt-4 p-3 bg-primary/5 rounded-lg text-sm">
