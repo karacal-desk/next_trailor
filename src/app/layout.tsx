@@ -22,8 +22,24 @@ export const metadata: Metadata = {
   title: "ASHAA-Tailoring Institute | Govt. Certified Dress Tailoring Course",
   description:
     "Join our government-certified dress design course and vocational tailoring certificate program. Get tailor jobs, sell your designs, and work from home with our affordable sewing courses.",
-  keywords:
-    "Govt. certified dress design course, Government vocational course, tailoring certificate course, tailor jobs, Sell your designed cloth, Most affordable govt. sewing course, Government selai school, Job oriented vocational course, jobs in vocational course, sell your recycled course, work after course, work from home course, work from home job, Sell old cloths" as string, // ✅ Explicitly cast as string
+  keywords: [
+    "Govt. certified dress design course",
+    "Govt. certified tailoring institute school",
+    "Government certified designing institute school",
+    "Government vocational course",
+    "tailoring certificate course",
+    "tailor jobs",
+    "Sell your designed cloth",
+    "Most affordable govt. sewing course",
+    "Government selai school",
+    "Job oriented vocational course",
+    "jobs in vocational course",
+    "sell your recycled course",
+    "work after course",
+    "work from home course",
+    "work from home job",
+    "Sell old cloths",
+  ].join(", "),
   openGraph: {
     title: "ASHAA-Tailoring Institute | Govt. Certified Dress Design Course",
     description:
@@ -39,9 +55,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={` ${raleway.variable} ${lora.variable}`}>
+    <html lang="en" className={`${raleway.variable} ${lora.variable}`}>
       <head>
-        <meta name="keywords" content={metadata.keywords as string} />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className="antialiased flex flex-col min-h-screen">
         <Navbar />
