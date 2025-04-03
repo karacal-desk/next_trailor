@@ -178,7 +178,7 @@ const About = () => {
                     alt="sample certificate"
                     fill
                     style={{ objectFit: "contain" }}
-                    quality={80}
+                    quality={100}
                   />
                 </Button>
               </div>
@@ -232,7 +232,7 @@ const About = () => {
                 alt="Sample Certificate"
                 fill
                 style={{ objectFit: "contain" }}
-                quality={100}
+                quality={80}
                 className="rounded-md"
               />
             </div>
@@ -268,7 +268,7 @@ const About = () => {
                 alt={`Gallery image ${currentImageIndex + 1}`}
                 fill
                 style={{ objectFit: "contain" }}
-                quality={100}
+                quality={80}
                 className="rounded-md"
               />
             </div>

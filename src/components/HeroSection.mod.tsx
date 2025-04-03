@@ -115,6 +115,7 @@ const HeroSection = () => {
                       width={32}
                       height={32}
                       className="h-full w-full object-cover"
+                      quality={80}
                     />
                   </div>
                 ))}
