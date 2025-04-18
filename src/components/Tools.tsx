@@ -68,7 +68,7 @@ const Tools = () => {
     };
   }, []);
   return (
-    <section ref={sectionRef} className="py-20 bg-[#111213] backdrop-blur-sm">
+    <section ref={sectionRef} className="py-20  backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-4xl font-bold mb-12 text-center text-[#F0C38E] drop-shadow-[0_0_10px_#F0C38E] sm:drop-shadow-[0_0_15px_#F0C38E]"
@@ -83,7 +83,7 @@ const Tools = () => {
           {toolSet.map((tool, index) => (
             <motion.div
               key={tool.index}
-              className="relative flex items-center justify-center bg-black/50 shadow-inner shadow-[#F0C38E]/70 backdrop-blur-sm text-white p-4 rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 w-40 h-40"
+              className="relative flex items-center justify-center backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/30 rounded-md text-white p-4 w-40 h-40"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

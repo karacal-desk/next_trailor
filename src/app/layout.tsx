@@ -5,6 +5,7 @@ import { Lora, Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar.mod";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import Background from "@/components/Background";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -61,7 +62,9 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className="antialiased flex flex-col min-h-screen">
+        <Background />
         <Navbar />
+
         {children}
         <SpeedInsights />
         <Analytics />

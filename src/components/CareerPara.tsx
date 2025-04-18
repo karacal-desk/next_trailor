@@ -6,13 +6,7 @@ import { Bell, BookOpen, CreditCard, Lightbulb, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-interface CareerParaProps {
-  handleContactClick: (careerTitle: string) => void;
-}
-
-const EnhancedParagraph: React.FC<CareerParaProps> = ({
-  handleContactClick,
-}) => {
+const EnhancedParagraph: React.FC = ({}) => {
   const [activePopup, setActivePopup] = useState<string | null>(null);
 
   const features = [
@@ -47,7 +41,7 @@ const EnhancedParagraph: React.FC<CareerParaProps> = ({
   ];
 
   return (
-    <div className="relative py-12 px-4 bg-[#111213] backdrop-blur-sm  ">
+    <div className="relative mb-10 py-12 rounded-md px-4 backdrop-blur-sm  ">
       <motion.p
         className="text-xl font-semibold text-white mb-8 max-w-3xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
@@ -77,10 +71,10 @@ const EnhancedParagraph: React.FC<CareerParaProps> = ({
           >
             <Button
               variant="outline"
-              className="w-full bg-white/10 hover:bg-white/20 text-[#F0C38E] border-white/20 hover:border-white/30 h-auto py-3 px-4 flex flex-col items-center gap-2"
+              className="w-full bg-white/10 hover:bg-white/20 text-[#F0C38E] hover:text-[#F0C38E] border-white/20 hover:border-white/30 h-auto py-3 px-4 flex flex-col items-center gap-2"
               onClick={() => setActivePopup(feature.id)}
             >
-              <div className="bg-white/10 p-2 rounded-full tex">
+              <div className="bg-white/10 p-2 rounded-full ">
                 {feature.icon}
               </div>
               <span className="font-semibold">{feature.title}</span>
@@ -91,7 +85,7 @@ const EnhancedParagraph: React.FC<CareerParaProps> = ({
 
       {activePopup && (
         <motion.div
-          className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/20 flex items-center justify-center z-50 p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -171,21 +165,23 @@ const EnhancedParagraph: React.FC<CareerParaProps> = ({
         </motion.div>
       )}
 
-      <motion.div
-        className="mt-8 text-center w-full flex justify-center items-center"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.8, duration: 0.6 }}
-      >
-        <Button
-          variant={"outline"}
-          className="text-md md:w-[30%] font-semibold  bg-[#F0C38E]/10 text-white border-[#F0C38E] hover:text-[#F0C38E] shadow-lg shadow-[#F0C38E]/30 transition-all duration-300"
-          onClick={() => handleContactClick("Custom Message ")}
+      {/**
+        <motion.div
+          className="mt-8 text-center w-full flex justify-center items-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.8, duration: 0.6 }}
         >
-          <p>Connect With Us</p>
-        </Button>
-      </motion.div>
+          <Button
+            variant={"outline"}
+            className="text-md md:w-[30%] font-semibold  bg-[#F0C38E]/10 text-white border-[#F0C38E] hover:text-[#F0C38E] shadow-lg shadow-[#F0C38E]/30 transition-all duration-300"
+            onClick={() => handleContactClick("Custom Message ")}
+          >
+            <p>Connect With Us</p>
+          </Button>
+        </motion.div>
+        */}
     </div>
   );
 };

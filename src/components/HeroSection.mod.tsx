@@ -39,11 +39,11 @@ const HeroSection = () => {
     },
   ];
   return (
-    <div className="relative bg-[#111213] backdrop-blur-sm py-12 md:py-24">
+    <div className="relative backdrop-blur-sm py-12 md:py-24">
       <div className="container mx-auto px-4">
         <div className="grid mt-12 md:mt-4 items-center gap-12 md:grid-cols-2">
           <motion.div
-            className="relative rounded-xl bg-black/50 p-10 shadow-inner shadow-[#F0C38E] backdrop-blur-sm text-center md:text-left"
+            className="relative rounded-md p-10  backdrop-blur-sm bg-white/5  border border-white/20 hover:border-white/30 text-center md:text-left"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -128,7 +128,7 @@ const HeroSection = () => {
 
           <motion.div
             className="relative flex justify-center items-center"
-            initial={{ opacity: 0, y: 150 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}

@@ -85,7 +85,7 @@ const Navbar = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed bg-[#221F39] text-[#F0C38E] z-10 w-full shadow-lg"
+        className="fixed bg-[#221F39]/40 backdrop-blur-lg text-[#F0C38E] z-10 w-full shadow-lg"
       >
         <motion.nav className="container mx-auto px-2">
           <div className="flex justify-between items-center h-20">
@@ -140,7 +140,7 @@ const Navbar = () => {
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="h-4 w-4" />
+                    <ChevronDown className="h-4 w-4 animate-bounce" />
                   </motion.div>
                 </Button>
 
@@ -158,7 +158,7 @@ const Navbar = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full right-0 mt-2 bg-[#221F39] rounded-md shadow-lg z-20 md:min-w-[450px] border border-[#F0C38E]/20"
+                      className="absolute top-full right-0 mt-2 bg-[#221F39]/90 backdrop-blur-md rounded-md  z-50 md:min-w-[450px] border border-[#F0C38E]/20"
                     >
                       <div className="p-3 flex flex-col">
                         {navItems.items.map((subItem, index) => (
@@ -168,7 +168,7 @@ const Navbar = () => {
                               onClick={closeAll}
                             >
                               {subItem.title}
-                              <ChevronDown />
+                              <ChevronDown className="animate-bounce" />
                             </p>
 
                             <p
@@ -189,13 +189,13 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
-              className="md:hidden mr-3 bg-[#F0C38E]/90 text-[#221F39]"
+              className="md:hidden mr-3 bg-[#F0C38E]/90  text-[#221F39]"
               onClick={toggleMobileMenu}
             >
               {mobileMenuOpen ? (
-                <X className="h-10 w-10" />
+                <X className="h-10 w-10 animate-pulse" />
               ) : (
-                <Menu className="h-10 w-10" />
+                <Menu className="h-10 w-10 animate-pulse" />
               )}
             </Button>
           </div>
@@ -210,7 +210,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "calc(100vh - 5rem)" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden fixed top-20 left-0 w-full bg-[#221F39] text-[#F0C38E] z-20 overflow-hidden"
+            className="md:hidden fixed top-20 left-0 w-full bg-[#221F39]/40 backdrop-blur-lg text-[#F0C38E] z-20 overflow-hidden"
           >
             <div className="p-4 overflow-y-auto h-full">
               <div key={navItems.title} className="mb-4">
@@ -226,7 +226,7 @@ const Navbar = () => {
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="h-5 w-5" />
+                    <ChevronDown className="h-5 w-5 animate-bounce" />
                   </motion.div>
                 </motion.button>
 
@@ -252,7 +252,7 @@ const Navbar = () => {
                               onClick={closeAll}
                             >
                               {item.title}
-                              <ChevronDown />
+                              <ChevronDown className="animate-bounce" />
                             </p>
 
                             <p

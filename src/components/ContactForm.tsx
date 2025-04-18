@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -27,6 +27,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { X } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(5, { message: "Name must be at least 5 characters." }),
@@ -140,11 +141,8 @@ export default function ContactForm({
   };
 
   return (
-    <section
-      ref={formSectionRef}
-      className="py-20 w-full bg-[#111213] backdrop-blur-sm"
-    >
-      <div className="flex w-full md:w-[80%] mx-auto justify-center items-center min-h-[100px] ">
+    <section ref={formSectionRef} className="py-20  backdrop-blur-sm">
+      <div className="flex justify-center items-center min-h-[100px] p-4">
         {!isExpanded ? (
           <Button
             variant="default"
@@ -158,7 +156,7 @@ export default function ContactForm({
           </Button>
         ) : (
           <motion.div
-            className="w-full text-left bg-black/50 shadow-inner shadow-[#F0C38E]/70 rounded-md backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            className="text-left bg-black/50  rounded-md backdrop-blur-sm "
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
@@ -168,9 +166,17 @@ export default function ContactForm({
               <CardTitle
                 ref={formHeaderRef}
                 tabIndex={-1}
-                className="text-xl font-semibold text-[#F0C38E] outline-none focus:ring-2 focus:ring-[#F0C38E] focus:ring-opacity-50 rounded-sm"
+                className="text-xl flex flex-row justify-between items-center  font-semibold text-[#F0C38E] outline-none"
               >
                 Contact Form
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={onClose}
+                  className="h-8 w-8 text-[#F0C38E] hover:text-white hover:bg-[#9370DB]/20"
+                >
+                  <X size={18} />
+                </Button>
               </CardTitle>
               <CardDescription className="text-gray-400 font-semibold text-md">
                 Fill out the form below to get in touch with us.
