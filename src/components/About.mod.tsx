@@ -66,7 +66,8 @@ const About = () => {
   const features = [
     {
       title: "Expert Instructors",
-      description: "Learn from industry professionals with years of experience",
+      description:
+        "Learn from Certified Industry Professionals with years of Experience!",
     },
     {
       title: "Hands-on Training",
@@ -78,18 +79,26 @@ const About = () => {
     },
     {
       title: "Flexible Schedule",
-      description: "Choose from day and evening classes to fit your lifestyle",
+      description:
+        "Choose from day and evening classes with onlilne and offline mode to fit you lifestyle",
     },
+
     {
       title: "Career Support",
       description: "Receive guidance on job placements and entrepreneurship",
+    },
+
+    {
+      title: "Making Old into New One",
+      description:
+        "Dress Making is an enjoyable craft and it it also a lucrative way to earn money, Our Institute offers you to make attractive hand made dress & accessories with old cloths and make it a professional art.",
     },
   ];
 
   const galleryImages = ["/images/image1.jpeg", "/images/image2.jpeg"];
 
   return (
-    <section ref={sectionRef} className="py-20 bg-[#111213] backdrop-blur-sm">
+    <section ref={sectionRef} className="py-20  backdrop-blur-sm">
       <div className="container mx-auto px-4 flex flex-col items-center">
         <motion.h2
           className="text-4xl font-bold mb-12 text-center text-[#F0C38E] drop-shadow-[0_0_10px_#F0C38E] sm:drop-shadow-[0_0_15px_#F0C38E]"
@@ -103,7 +112,7 @@ const About = () => {
 
         {/* Main Card */}
         <motion.div
-          className="flex flex-col md:flex-row bg-black/50 shadow-inner shadow-[#F0C38E]/70 backdrop-blur-sm rounded-md text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1 w-full max-w-5xl md:p-6"
+          className="flex flex-col md:flex-row  backdrop-blur-sm  bg-white/5  border border-white/20 hover:border-white/30 rounded-md text-white w-full max-w-5xl md:p-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -121,22 +130,23 @@ const About = () => {
                 className="mb-4 font-semibold text-gray-400"
                 style={{ lineHeight: 2 }}
               >
-                <b className="text-[#F0C38E]">ASHAA</b> is a Tailoring Institute{" "}
+                <b className="text-[#F0C38E]">ASHAA</b> is a{" "}
                 <b className="text-[#F0C38E]">
                   Government-Certified Independent Training Center
                 </b>{" "}
-                dedicated to empowering individuals with comprehensive expertise
-                in dress design and fashion technology. We offer a diverse range
-                of government-approved courses, designed to equip students with
+                dedicated to empowering individuals with hands on experience in{" "}
                 <b className="text-[#F0C38E]">
-                  {" "}
-                  industry-relevant skills{" "}
-                </b>at <b className="text-[#F0C38E]">affordable fees</b>.
-                Whether you &apos; re looking to start a new career or enhance
-                your existing expertise, our institute provides the perfect
-                opportunity to turn your{" "}
-                <b className="text-[#F0C38E]">passion for fashion</b> into a{" "}
-                <b className="text-[#F0C38E]">successful profession.</b>
+                  garment design, stiching with top-level sewing machine{" "}
+                </b>
+                . We offer a diverse range of practical skill courses with
+                pattern making proper choice of fabric types at{" "}
+                <b className="text-[#F0C38E]">affordable fees</b>. Whether you
+                &apos; re looking to start a new career or enhance your existing
+                expertise, our institute provides the perfect opportunity to
+                turn your <b className="text-[#F0C38E]">passion for fashion</b>{" "}
+                into a <b className="text-[#F0C38E]">successful profession. </b>
+                Explore your creativity with unique sewing and design skills and
+                turn you hobby to profession by using old dress material.
               </p>
               <Button
                 onClick={() => setShowGallery(true)}
@@ -145,10 +155,11 @@ const About = () => {
                 <Eye className="w-4 h-4 mr-2" /> Checkout Gallery
               </Button>
 
-              <Link href={"#career"} className="block max-w-fit">
-                <Button className="flex flex-row  gap-1 items-center  bg-[#F0C38E] hover:bg-[#F0C38E]/80 text-black     ">
-                  <Briefcase className="w-4 h-4 mr-2" /> Career Options
-                </Button>
+              <Link
+                href={"#career"}
+                className="flex flex-row  gap-4 items-center  bg-[#F0C38E] hover:bg-[#F0C38E]/80 text-black font-sans text-md w-fit px-4 py-1.5 rounded-md"
+              >
+                <Briefcase className="w-4 h-4 " /> Career Options
               </Link>
             </CardContent>
           </div>
@@ -191,7 +202,7 @@ const About = () => {
           {features.map((item, index) => (
             <motion.div
               key={index}
-              className="flex flex-col bg-black/50 shadow-inner shadow-[#F0C38E]/70 backdrop-blur-sm rounded-md text-white p-6 min-w-[250px] flex-grow md:w-[calc(33.333%-1.5rem)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              className="flex flex-col  backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/20 rounded-md text-white p-6 min-w-[250px] flex-grow md:w-[calc(33.333%-1.5rem)] "
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -214,8 +225,8 @@ const About = () => {
       {/* Certificate Preview Modal */}
       {showCertificate && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
-          <div className="bg-white p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
-            <h3 className="text-2xl font-bold mb-4 text-gray-800 flex justify-between items-center">
+          <div className=" bg-white/10 backdrop-blur-md border border-white/30 p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
+            <h3 className="text-2xl font-bold mb-4 text-white flex justify-between items-center">
               <span>Sample Certificate</span>
               <Button
                 onClick={() => setShowCertificate(false)}
@@ -249,9 +260,9 @@ const About = () => {
       )}
       {/* Gallery Preview Modal */}
       {showGallery && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 ">
-          <div className="bg-white p-4 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
-            <h3 className="text-2xl font-bold mb-4 text-gray-800 flex justify-between items-center">
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+          <div className="bg-white/10 border border-white/30 backdrop-blur-md p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
+            <h3 className="text-2xl font-bold mb-4 text-white flex justify-between items-center">
               <span>Gallery</span>
               <Button
                 onClick={() => setShowGallery(false)}

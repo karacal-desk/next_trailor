@@ -77,12 +77,12 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
 
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center z-50"
           onClick={onCancel}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-[#1a1a1c] p-6 rounded-lg shadow-lg border border-[#9370DB]/50 max-w-lg w-full mt-16"
+            className="bg-white/10 backdrop-blur-sm border border-white/30 p-6 rounded-lg shadow-lg max-w-lg w-[90%] mt-16"
           >
             <FormContent
               course={course}
@@ -114,7 +114,7 @@ const FormContent: React.FC<
 
   return (
     <>
-      <div className="flex justify-between items-center mb-4 sticky top-0 bg-[#1a1a1c] py-4 z-10">
+      <div className="flex justify-between items-center mb-4 sticky top-0  py-4 z-10">
         <h3
           ref={headerRef}
           tabIndex={-1}

@@ -130,7 +130,7 @@ const Courses = () => {
   const renderCourseCard = (course: Course, index: number) => (
     <motion.div
       key={index}
-      className="flex flex-grow flex-col text-left md:max-w-[48%] p-4 bg-black/50 shadow-inner rounded-md shadow-[#F0C38E]/70 backdrop-blur-sm text-white transition-all duration-300 hover:shadow-lg relative"
+      className="flex flex-grow flex-col text-left md:max-w-[48%] p-4 backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/20 rounded-md text-white relative"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -148,10 +148,10 @@ const Courses = () => {
           <DropdownMenuTrigger asChild>
             <Button
               variant="default"
-              className="w-full text-[#221F39] hover:text-[#F0C38E] bg-[#F0C38E]   border-none justify-between"
+              className="w-full text-[#221F39] bg-white/10  border-none justify-between"
             >
-              <strong className="">Fee Details</strong>
-              <ChevronDown className="h-8 w-8 opacity-100  font-bold" />
+              <strong className="text-[#F0C38E]">Fee Details</strong>
+              <ChevronDown className="h-8 w-8 animate-bounce opacity-100 text-[#F0C38E]" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -193,7 +193,7 @@ const Courses = () => {
   }
   const renderDiplomaCourseCard = () => (
     <motion.div
-      className="flex flex-grow flex-col text-left  md:max-w-[48%] p-4 bg-black/50 shadow-inner rounded-md shadow-[#F0C38E]/70 backdrop-blur-sm text-white transition-all duration-300 hover:shadow-lg relative"
+      className="flex flex-grow flex-col text-left md:max-w-[48%] p-4 backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/20 rounded-md text-white relative"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -211,10 +211,10 @@ const Courses = () => {
           <DropdownMenuTrigger asChild>
             <Button
               variant="default"
-              className="w-full text-[#221F39] hover:text-[#F0C38E] bg-[#F0C38E]   border-none justify-between"
+              className="w-full text-[#221F39] bg-white/10  border-none justify-between"
             >
-              <strong className="">Fee Details</strong>
-              <ChevronDown className="h-8 w-8 opacity-100  font-bold" />
+              <strong className="text-[#F0C38E]">Fee Details</strong>
+              <ChevronDown className="h-8 w-8 animate-bounce opacity-100 text-[#F0C38E]" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -253,10 +253,7 @@ const Courses = () => {
   );
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-20 bg-[#111213] backdrop-blur-sm relative"
-    >
+    <section ref={sectionRef} className="py-20 backdrop-blur-sm relative">
       {isSubmitting && (
         <Progress value={100} className="w-full h-1 fixed top-0 left-0 z-50" />
       )}

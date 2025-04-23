@@ -81,7 +81,7 @@ const Career = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-20 bg-[#111213] backdrop-blur-sm">
+    <section ref={sectionRef} className="py-20 backdrop-blur-sm">
       <div className="container mx-auto px-4 text-center">
         <motion.h2
           className="text-4xl font-bold mb-12 text-center text-[#F0C38E] drop-shadow-[0_0_10px_#F0C38E] sm:drop-shadow-[0_0_15px_#F0C38E]"
@@ -93,12 +93,12 @@ const Career = () => {
           Launch Your Fashion Career
         </motion.h2>
 
-        <EnhancedParagraph handleContactClick={handleContactClick} />
+        <EnhancedParagraph />
         <div className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {opportunities.map((opportunity, index) => (
             <motion.div
               key={index}
-              className="bg-black/50 shadow-inner shadow-[#F0C38E]/70 rounded-md backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              className="backdrop-blur-sm bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 rounded-md "
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
