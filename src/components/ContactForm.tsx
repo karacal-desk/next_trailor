@@ -142,7 +142,7 @@ export default function ContactForm({
 
   return (
     <section ref={formSectionRef} className="py-20  backdrop-blur-sm">
-      <div className="flex justify-center items-center min-h-[100px] p-4">
+      <div className="flex justify-center items-center min-h-[100px] md:w-[70%] mx-auto ">
         {!isExpanded ? (
           <Button
             variant="default"
@@ -156,7 +156,7 @@ export default function ContactForm({
           </Button>
         ) : (
           <motion.div
-            className="text-left bg-black/50  rounded-md backdrop-blur-sm "
+            className="text-left w-[110%] md:w-[70%] bg-white/10 border border-white/30  rounded-md backdrop-blur-sm "
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}

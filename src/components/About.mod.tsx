@@ -66,7 +66,8 @@ const About = () => {
   const features = [
     {
       title: "Expert Instructors",
-      description: "Learn from industry professionals with years of experience",
+      description:
+        "Learn from Certified Industry Professionals with years of Experience!",
     },
     {
       title: "Hands-on Training",
@@ -78,11 +79,19 @@ const About = () => {
     },
     {
       title: "Flexible Schedule",
-      description: "Choose from day and evening classes to fit your lifestyle",
+      description:
+        "Choose from day and evening classes with onlilne and offline mode to fit you lifestyle",
     },
+
     {
       title: "Career Support",
       description: "Receive guidance on job placements and entrepreneurship",
+    },
+
+    {
+      title: "Making Old into New One",
+      description:
+        "Dress Making is an enjoyable craft and it it also a lucrative way to earn money, Our Institute offers you to make attractive hand made dress & accessories with old cloths and make it a professional art.",
     },
   ];
 
@@ -121,22 +130,23 @@ const About = () => {
                 className="mb-4 font-semibold text-gray-400"
                 style={{ lineHeight: 2 }}
               >
-                <b className="text-[#F0C38E]">ASHAA</b> is a Tailoring Institute{" "}
+                <b className="text-[#F0C38E]">ASHAA</b> is a{" "}
                 <b className="text-[#F0C38E]">
                   Government-Certified Independent Training Center
                 </b>{" "}
-                dedicated to empowering individuals with comprehensive expertise
-                in dress design and fashion technology. We offer a diverse range
-                of government-approved courses, designed to equip students with
+                dedicated to empowering individuals with hands on experience in{" "}
                 <b className="text-[#F0C38E]">
-                  {" "}
-                  industry-relevant skills{" "}
-                </b>at <b className="text-[#F0C38E]">affordable fees</b>.
-                Whether you &apos; re looking to start a new career or enhance
-                your existing expertise, our institute provides the perfect
-                opportunity to turn your{" "}
-                <b className="text-[#F0C38E]">passion for fashion</b> into a{" "}
-                <b className="text-[#F0C38E]">successful profession.</b>
+                  garment design, stiching with top-level sewing machine{" "}
+                </b>
+                . We offer a diverse range of practical skill courses with
+                pattern making proper choice of fabric types at{" "}
+                <b className="text-[#F0C38E]">affordable fees</b>. Whether you
+                &apos; re looking to start a new career or enhance your existing
+                expertise, our institute provides the perfect opportunity to
+                turn your <b className="text-[#F0C38E]">passion for fashion</b>{" "}
+                into a <b className="text-[#F0C38E]">successful profession. </b>
+                Explore your creativity with unique sewing and design skills and
+                turn you hobby to profession by using old dress material.
               </p>
               <Button
                 onClick={() => setShowGallery(true)}
@@ -215,7 +225,7 @@ const About = () => {
       {/* Certificate Preview Modal */}
       {showCertificate && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
-          <div className=" bg-white/20 backdrop-blur-md p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
+          <div className=" bg-white/10 backdrop-blur-md border border-white/30 p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
             <h3 className="text-2xl font-bold mb-4 text-white flex justify-between items-center">
               <span>Sample Certificate</span>
               <Button
@@ -251,7 +261,7 @@ const About = () => {
       {/* Gallery Preview Modal */}
       {showGallery && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
-          <div className="bg-white/20 backdrop-blur-md p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
+          <div className="bg-white/10 border border-white/30 backdrop-blur-md p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
             <h3 className="text-2xl font-bold mb-4 text-white flex justify-between items-center">
               <span>Gallery</span>
               <Button

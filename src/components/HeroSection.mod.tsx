@@ -6,38 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const HeroSection = () => {
-  const avatars = [
-    {
-      id: 1,
-      src: "/avatars/avatar1.png",
-      alt: "Student Avatar 1",
-    },
-    {
-      id: 2,
-      src: "/avatars/avatar2.png",
-      alt: "Student Avatar 2",
-    },
-    {
-      id: 3,
-      src: "/avatars/avatar3.png",
-      alt: "Student Avatar 3",
-    },
-    {
-      id: 4,
-      src: "/avatars/avatar4.png",
-      alt: "Student Avatar 4",
-    },
-    {
-      id: 5,
-      src: "/avatars/avatar5.png",
-      alt: "Student Avatar 5",
-    },
-    {
-      id: 6,
-      src: "/avatars/avatar6.png",
-      alt: "Student Avatar 6",
-    },
-  ];
   return (
     <div className="relative backdrop-blur-sm py-12 md:py-24">
       <div className="container mx-auto px-4">
@@ -62,15 +30,26 @@ const HeroSection = () => {
               </div>
             </motion.h1>
             <motion.p
-              className="mt-4 mx-auto max-w-xl text-gray-400 md:text-lg"
+              className="mt-4 mx-auto max-w-xl text-justify md:text-left text-gray-400 md:text-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              Learn professional tailoring skills from industry experts.
-              Transform your passion into a successful career with our
-              comprehensive courses.
+              Learn Professional Tailoring and sewing skills with{" "}
+              <strong>Government Diploma Certificate</strong> from Industrial
+              experts. Transform your passion and fulfill your hobbies with
+              various creative sewing techniques. Join Our best tailoring
+              courses near you today!
+            </motion.p>
+            <motion.p
+              className="mt-4 mx-auto max-w-xl text-[#F0C38E] font-semibold md:hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              Contact Us @ +91 9147714547
             </motion.p>
             <motion.div
               className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start"
@@ -103,23 +82,6 @@ const HeroSection = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              <div className="flex -space-x-2">
-                {avatars.map((avatar) => (
-                  <div
-                    key={avatar.id}
-                    className="h-8 w-8 rounded-full border-2 border-white overflow-hidden shadow-md flex items-center justify-center"
-                  >
-                    <Image
-                      src={avatar.src || "/placeholder.svg"}
-                      alt={avatar.alt}
-                      width={32}
-                      height={32}
-                      className="h-full w-full object-cover"
-                      quality={80}
-                    />
-                  </div>
-                ))}
-              </div>
               <p className="text-sm text-gray-400">
                 Join 500+ students already learning
               </p>
