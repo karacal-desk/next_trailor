@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -40,15 +40,6 @@ const Navbar = () => {
   const [activeMobileSection, setActiveMobileSection] = useState<string | null>(
     null,
   );
-  const [showLogo, setShowLogo] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowLogo((prev) => !prev);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const toggleDesktopSection = (title: string) => {
     if (expandedSection === title) {
@@ -85,7 +76,7 @@ const Navbar = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed bg-[#221F39]/40 backdrop-blur-lg text-[#F0C38E] z-10 w-full shadow-lg"
+        className="fixed md:bg-[#221F39]/40  backdrop-blur-md text-[#F0C38E] z-10 w-full shadow-lg"
       >
         <motion.nav className="container mx-auto px-2">
           <div className="flex justify-between items-center h-20">
@@ -93,36 +84,22 @@ const Navbar = () => {
               href="/"
               className="ml-3 md:ml-0 font-bold text-2xl flex items-center"
             >
-              <AnimatePresence mode="wait">
-                {showLogo ? (
-                  <motion.div
-                    key="logo"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-14 mt-1 h-14 relative"
-                  >
-                    <Image
-                      src="/icon.png"
-                      alt="ASHAA Logo"
-                      width={60}
-                      height={60}
-                      className="object-contain"
-                    />
-                  </motion.div>
-                ) : (
-                  <motion.span
-                    key="text"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    ASHAA
-                  </motion.span>
-                )}
-              </AnimatePresence>
+              <motion.div
+                key="logo"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="w-14 mt-1 h-14 relative"
+              >
+                <Image
+                  src="/asha_logo.jpg"
+                  alt="ASHAA Logo"
+                  width={100}
+                  height={100}
+                  className="object-contain rounded-md"
+                />
+              </motion.div>
             </Link>
 
             {/* Desktop Navigation */}
@@ -210,7 +187,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "calc(100vh - 5rem)" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden fixed top-20 left-0 w-full bg-[#221F39]/40 backdrop-blur-lg text-[#F0C38E] z-20 overflow-hidden"
+            className="md:hidden fixed top-20 left-0 w-full bg-black/70 backdrop-blur-md text-[#F0C38E] z-20 overflow-hidden"
           >
             <div className="p-4 overflow-y-auto h-full">
               <div key={navItems.title} className="mb-4">
