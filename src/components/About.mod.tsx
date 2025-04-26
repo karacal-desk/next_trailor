@@ -14,6 +14,8 @@ const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const sectionRef = useRef<HTMLElement>(null);
+  const galleryRef = useRef<HTMLHeadingElement>(null);
+  const certificateRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     if (sectionRef.current) {
@@ -62,6 +64,44 @@ const About = () => {
       window.removeEventListener("hashchange", handleHashChange);
     };
   }, []);
+
+  useEffect(() => {
+    if (showGallery && galleryRef.current) {
+      galleryRef.current.focus();
+
+      // Custom scroll with offset for navbar
+      const headerHeight = 150;
+      const yOffset = -headerHeight;
+      const y =
+        galleryRef.current.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+    }
+  }, [showGallery]);
+
+  useEffect(() => {
+    if (showCertificate && certificateRef.current) {
+      certificateRef.current.focus();
+
+      // Custom scroll with offset for navbar
+      const headerHeight = 150;
+      const yOffset = -headerHeight;
+      const y =
+        certificateRef.current.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+    }
+  }, [showCertificate]);
 
   const features = [
     {
@@ -205,7 +245,6 @@ const About = () => {
               className="flex flex-col  backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/20 rounded-md text-white p-6 min-w-[250px] flex-grow md:w-[calc(33.333%-1.5rem)] "
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
             >
               <CardHeader>
@@ -226,7 +265,10 @@ const About = () => {
       {showCertificate && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
           <div className=" bg-white/10 backdrop-blur-md border border-white/30 p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
-            <h3 className="text-2xl font-bold mb-4 text-white flex justify-between items-center">
+            <h3
+              ref={certificateRef}
+              className="text-2xl font-bold mb-4 text-white flex justify-between items-center"
+            >
               <span>Sample Certificate</span>
               <Button
                 onClick={() => setShowCertificate(false)}
@@ -261,8 +303,11 @@ const About = () => {
       {/* Gallery Preview Modal */}
       {showGallery && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
-          <div className="bg-white/10 border border-white/30 backdrop-blur-md p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
-            <h3 className="text-2xl font-bold mb-4 text-white flex justify-between items-center">
+          <div className="bg-white/10 border border-white/30 backdrop-blur-md p-6 rounded-lg max-w-4xl w-full mx-4 mt-10 max-h-[90vh] overflow-auto">
+            <h3
+              ref={galleryRef}
+              className="text-2xl font-bold mb-4 text-white flex justify-between items-center"
+            >
               <span>Gallery</span>
               <Button
                 onClick={() => setShowGallery(false)}

@@ -43,17 +43,21 @@ const EnrollmentForm: React.FC<EnrollmentFormProps> = ({
   isSubmitting,
   progress,
 }) => {
-  const headerRef = useRef<HTMLHeadingElement | null>(null);
+  const headerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && headerRef.current) {
       const timer = setTimeout(() => {
-        headerRef.current?.focus();
-        headerRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
+        if (headerRef.current) {
+          headerRef.current.focus();
+          // Adjust scroll position to account for navbar height
+          headerRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }
       }, 100);
+
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
@@ -114,9 +118,11 @@ const FormContent: React.FC<
 
   return (
     <>
-      <div className="flex justify-between items-center mb-4 sticky top-0  py-4 z-10">
+      <div
+        ref={headerRef}
+        className="flex justify-between items-center mb-4 sticky top-0  py-4 z-10"
+      >
         <h3
-          ref={headerRef}
           tabIndex={-1}
           className="text-xl font-semibold text-[#F0C38E] outline-none"
         >

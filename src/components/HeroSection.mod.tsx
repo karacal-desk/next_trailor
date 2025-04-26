@@ -15,14 +15,14 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.2 }}
           >
             <motion.h1
               className="text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.2 }}
             >
               Master the Art of{" "}
               <div className="z-20 text-[#F0C38E]">
@@ -34,7 +34,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.1 }}
             >
               Learn Professional Tailoring and sewing skills with{" "}
               <strong>Government Diploma Certificate</strong> from Industrial
@@ -47,7 +47,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.2 }}
             >
               Contact Us @ +91 9147714547
             </motion.p>
@@ -56,7 +56,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.2 }}
             >
               <Link href="#courses">
                 <Button
@@ -80,7 +80,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.8, duration: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.2 }}
             >
               <p className="text-sm text-gray-400">
                 Join 500+ students already learning
@@ -93,7 +93,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.2 }}
           >
             <div className="absolute inset-0 rounded-full bg-[#F0C38E]/20 blur-3xl" />
             <Image

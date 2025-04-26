@@ -75,7 +75,7 @@ const Navbar = () => {
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
         className="fixed md:bg-[#221F39]/40  backdrop-blur-md text-[#F0C38E] z-10 w-full shadow-lg"
       >
         <motion.nav className="container mx-auto px-2">
@@ -89,7 +89,7 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.2 }}
                 className="w-14 mt-1 h-14 relative"
               >
                 <Image

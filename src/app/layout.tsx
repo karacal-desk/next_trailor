@@ -62,8 +62,8 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className="antialiased flex flex-col min-h-screen">
-        <Background />
         <Navbar />
+        <Background />
 
         {children}
         <SpeedInsights />
