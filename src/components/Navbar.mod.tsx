@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -40,6 +40,15 @@ const Navbar = () => {
   const [activeMobileSection, setActiveMobileSection] = useState<string | null>(
     null,
   );
+  const [showLogo, setShowLogo] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowLogo((prev) => !prev);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const toggleDesktopSection = (title: string) => {
     if (expandedSection === title) {
@@ -84,22 +93,36 @@ const Navbar = () => {
               href="/"
               className="ml-3 md:ml-0 font-bold text-2xl flex items-center"
             >
-              <motion.div
-                key="logo"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="w-14 mt-1 h-14 relative"
-              >
-                <Image
-                  src="/asha_logo.jpg"
-                  alt="ASHAA Logo"
-                  width={100}
-                  height={100}
-                  className="object-contain rounded-md"
-                />
-              </motion.div>
+              <AnimatePresence mode="wait">
+                {showLogo ? (
+                  <motion.div
+                    key="logo"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className=" border-b  border-r border-[#9370DB] hover:text-[#9370DB] shadow-lg shadow-[#9370DB]/30 rounded-md   mt-1 h-14 w-14 relative"
+                  >
+                    <Image
+                      src="/icon.png"
+                      alt="ASHAA Logo"
+                      width={80}
+                      height={80}
+                      className="object-contain"
+                    />
+                  </motion.div>
+                ) : (
+                  <motion.span
+                    key="text"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    ASHAA
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </Link>
 
             {/* Desktop Navigation */}
