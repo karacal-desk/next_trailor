@@ -8,10 +8,85 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
+// Add this after the imports:
+const TailoringLoader = () => (
+  <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-md">
+    <svg
+      width="80"
+      height="80"
+      viewBox="0 0 80 80"
+      xmlns="http://www.w3.org/2000/svg"
+      className="animate-pulse"
+    >
+      <g fill="none" stroke="#F0C38E" strokeWidth="2">
+        {/* Scissors animation */}
+        <g transform="translate(40, 40)">
+          <path d="M-20,0 L20,0" strokeDasharray="40" strokeDashoffset="0">
+            <animate
+              attributeName="stroke-dashoffset"
+              from="0"
+              to="80"
+              dur="2s"
+              repeatCount="indefinite"
+            />
+          </path>
+          <path d="M-15,-15 L15,15" strokeDasharray="42.4" strokeDashoffset="0">
+            <animate
+              attributeName="stroke-dashoffset"
+              from="0"
+              to="84.8"
+              dur="2s"
+              repeatCount="indefinite"
+            />
+          </path>
+          <path d="M-15,15 L15,-15" strokeDasharray="42.4" strokeDashoffset="0">
+            <animate
+              attributeName="stroke-dashoffset"
+              from="0"
+              to="84.8"
+              dur="2s"
+              repeatCount="indefinite"
+            />
+          </path>
+        </g>
+
+        {/* Needle and thread */}
+        <circle
+          cx="40"
+          cy="40"
+          r="30"
+          strokeDasharray="188.5"
+          strokeDashoffset="0"
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            from="0"
+            to="188.5"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+        </circle>
+
+        {/* Sewing machine needle */}
+        <path d="M40,10 L40,70" strokeDasharray="60" strokeDashoffset="0">
+          <animate
+            attributeName="stroke-dashoffset"
+            from="0"
+            to="120"
+            dur="1.5s"
+            repeatCount="indefinite"
+          />
+        </path>
+      </g>
+    </svg>
+  </div>
+);
+
 const About = () => {
   const [showCertificate, setShowCertificate] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageLoading, setImageLoading] = useState(true);
 
   const sectionRef = useRef<HTMLElement>(null);
   const galleryRef = useRef<HTMLHeadingElement>(null);
@@ -102,6 +177,11 @@ const About = () => {
       });
     }
   }, [showCertificate]);
+
+  useEffect(() => {
+    // Reset loading state when changing images
+    setImageLoading(true);
+  }, [currentImageIndex]);
 
   const features = [
     {
@@ -230,6 +310,8 @@ const About = () => {
                     fill
                     style={{ objectFit: "contain" }}
                     quality={100}
+                    placeholder="blur"
+                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAwIiBoZWlnaHQ9IjQ3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                   />
                 </Button>
               </div>
@@ -280,13 +362,18 @@ const About = () => {
               </Button>
             </h3>
             <div className="relative w-full h-[60vh] mb-6">
+              {imageLoading && <TailoringLoader />}
               <Image
                 src="/sample.jpeg"
                 alt="Sample Certificate"
                 fill
                 style={{ objectFit: "contain" }}
-                quality={80}
+                quality={60}
+                priority
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAwIiBoZWlnaHQ9IjQ3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                 className="rounded-md"
+                onLoadingComplete={() => setImageLoading(false)}
               />
             </div>
             <div className="flex justify-end">
@@ -319,13 +406,18 @@ const About = () => {
               </Button>
             </h3>
             <div className="relative w-full h-[60vh] mb-6">
+              {imageLoading && <TailoringLoader />}
               <Image
                 src={galleryImages[currentImageIndex] || "/placeholder.svg"}
                 alt={`Gallery image ${currentImageIndex + 1}`}
                 fill
                 style={{ objectFit: "contain" }}
                 quality={80}
+                priority
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAwIiBoZWlnaHQ9IjQ3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                 className="rounded-md"
+                onLoadingComplete={() => setImageLoading(false)}
               />
             </div>
             <div className="flex justify-center gap-2 mb-4">
