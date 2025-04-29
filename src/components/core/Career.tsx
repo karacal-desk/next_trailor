@@ -4,9 +4,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import ContactForm from "./ContactForm";
-import { Button } from "./ui/button";
-import EnhancedParagraph from "./CareerPara";
+import ContactForm from "@/components/modals/ContactForm.modal";
+import EnhancedParagraph from "@/components/modals/CareerPara.modal";
+import { Button } from "../ui/button";
 
 const Career = () => {
   const sectionRef = useRef<HTMLElement>(null);

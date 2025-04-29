@@ -2,11 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import { Toaster } from "sonner";
-import HeroSection from "@/components/HeroSection.mod";
-import About from "@/components/About.mod";
-import Courses from "@/components/Courses";
-import Tools from "@/components/Tools";
-import Career from "@/components/Career";
+import HeroSection from "@/components/core/HeroSection";
+import About from "@/components/core/About";
+import Courses from "@/components/core/Courses";
+import Tools from "@/components/core/Tools";
+import Career from "@/components/core/Career";
 
 const Page = () => {
   const [position, setPosition] = useState<"top-center" | "bottom-right">(

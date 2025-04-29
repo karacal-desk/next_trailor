@@ -5,12 +5,12 @@ import { X } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Textarea } from "./ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import type { Course } from "@/lib/CourseData";
-import { Progress } from "./ui/progress";
+import { Progress } from "@/components/ui/progress";
 
 const enrollmentSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),

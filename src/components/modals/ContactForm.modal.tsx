@@ -119,7 +119,6 @@ export default function ContactForm({
 
       clearInterval(interval);
       setProgress(100);
-      console.log(values);
       setSubmissionStatus("submitted");
     } catch (error) {
       console.error("Form submission failed:", error);

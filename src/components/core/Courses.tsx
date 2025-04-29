@@ -11,8 +11,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-import EnrollmentForm, { EnrollmentFormValues } from "./EnrollmentForm";
-import SyllabusModal from "./SyllabusModal";
+import EnrollmentForm, {
+  EnrollmentFormValues,
+} from "@/components/modals/EnrollmentForm.modal";
+import SyllabusModal from "@/components/modals/Syllabus.modal";
 import { courses, diplomaCourse, type Course } from "@/lib/CourseData";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";

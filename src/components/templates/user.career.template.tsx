@@ -39,7 +39,7 @@ export const UserEmailTemplate: FC<Readonly<UserEmailProps>> = ({
     <Body style={main}>
       <Container style={container}>
         <Img
-          src="https://firebasestorage.googleapis.com/v0/b/game-lib-bd07d.appspot.com/o/files%2Fashaafoundation%2FLogo.png?alt=media&token=3238ba2c-866b-45e0-85e0-aa1473374895"
+          src="https://firebasestorage.googleapis.com/v0/b/game-lib-bd07d.appspot.com/o/files%2Fashaafoundation%2F1745937979056.jpg?alt=media&token=ac1158a0-65c6-4d3c-b49c-893da85407a9"
           alt="ASHAA-Tailoring Institute"
           width={80}
           height={80}

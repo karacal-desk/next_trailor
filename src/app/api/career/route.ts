@@ -8,7 +8,6 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  console.log("getting the form formData");
   const formData = await req.json();
   const {
     name,
@@ -37,8 +36,6 @@ export async function POST(req: Request) {
       }),
     });
 
-    console.log("User Email Response:", userResponse);
-
     if (userResponse.error) {
       console.error("User Email Error:", userResponse.error);
       return Response.json({ userError: userResponse.error }, { status: 500 });
@@ -60,8 +57,6 @@ export async function POST(req: Request) {
         loanFacility,
       }),
     });
-
-    console.log("Admin Email Response:", adminResponse);
 
     if (adminResponse.error) {
       console.error("Admin Email Error:", adminResponse.error);
