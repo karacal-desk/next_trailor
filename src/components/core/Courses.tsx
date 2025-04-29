@@ -141,20 +141,27 @@ const Courses = () => {
       <CardHeader className="pb-4">
         <CardTitle>{course.name}</CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col space-y-2 text-left">
+      <CardContent className="flex flex-col  space-y-2 text-left">
         <p>
           <strong className="text-[#F0C38E]">Duration:</strong>{" "}
           {course.duration}
         </p>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button
-              variant="default"
-              className="w-full text-[#221F39] bg-white/10  border-none justify-between"
-            >
-              <strong className="text-[#F0C38E]">Fee Details</strong>
-              <ChevronDown className="h-8 w-8 animate-bounce opacity-100 text-[#F0C38E]" />
-            </Button>
+            <div className="flex flex-row  justify-between items-center space-x-2  w-full">
+              <strong className="text-[#F0C38E] text-left  w-full md:hidden">
+                Fee Details:
+              </strong>
+              <Button
+                variant="default"
+                className=" w-full text-[#221F39] bg-white/10  border-none justify-center  md:justify-between"
+              >
+                <strong className="text-[#F0C38E] hidden md:block">
+                  Fee Details
+                </strong>
+                <ChevronDown className="h-8 w-8  animate-bounce  text-[#F0C38E]" />
+              </Button>
+            </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
@@ -211,13 +218,20 @@ const Courses = () => {
         </p>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button
-              variant="default"
-              className="w-full text-[#221F39] bg-white/10  border-none justify-between"
-            >
-              <strong className="text-[#F0C38E]">Fee Details</strong>
-              <ChevronDown className="h-8 w-8 animate-bounce opacity-100 text-[#F0C38E]" />
-            </Button>
+            <div className="flex flex-row  justify-between items-center space-x-2  w-full ">
+              <strong className="text-[#F0C38E] text-left  w-full md:hidden">
+                Fee Details:
+              </strong>
+              <Button
+                variant="default"
+                className=" w-full text-[#221F39] bg-white/10  border-none justify-center  md:justify-between"
+              >
+                <strong className="text-[#F0C38E] hidden md:block">
+                  Fee Details
+                </strong>
+                <ChevronDown className="h-8 w-8  animate-bounce  text-[#F0C38E]" />
+              </Button>
+            </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
