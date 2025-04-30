@@ -29,12 +29,10 @@ export const GalleryModal = ({
   onPrevImage,
   onNextImage,
 }: GalleryModalProps) => {
-  const modalRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLHeadingElement>(null);
 
-  // Center the modal when it opens
   useEffect(() => {
     if (isOpen && modalRef.current) {
-      // Small delay to ensure DOM is ready
       setTimeout(() => {
         modalRef.current?.scrollIntoView({
           behavior: "smooth",

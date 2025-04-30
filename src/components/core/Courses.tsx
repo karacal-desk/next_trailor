@@ -147,22 +147,22 @@ const Courses = () => {
           {course.duration}
         </p>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <div className="flex flex-row  justify-between items-center space-x-2  w-full">
-              <strong className="text-[#F0C38E] text-left  w-full md:hidden">
-                Fee Details:
-              </strong>
+          <div className="flex flex-row  items-center justify-between w-full ">
+            <strong className="text-[#F0C38E] text-left  w-full md:hidden">
+              Fee Details:
+            </strong>
+            <DropdownMenuTrigger asChild>
               <Button
                 variant="default"
-                className=" w-full text-[#221F39] bg-white/10  border-none justify-center  md:justify-between"
+                className=" w-fit md:w-full text-[#221F39] bg-white/10  border-none justify-center items-center  md:justify-between"
               >
                 <strong className="text-[#F0C38E] hidden md:block">
                   Fee Details
                 </strong>
                 <ChevronDown className="h-8 w-8  animate-bounce  text-[#F0C38E]" />
               </Button>
-            </div>
-          </DropdownMenuTrigger>
+            </DropdownMenuTrigger>
+          </div>
           <DropdownMenuContent
             align="end"
             className="w-[200px] bg-[#221F39] text-[#F0C38E] font-semibold"
@@ -217,22 +217,22 @@ const Courses = () => {
           {diplomaCourse.duration}
         </p>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <div className="flex flex-row  justify-between items-center space-x-2  w-full ">
-              <strong className="text-[#F0C38E] text-left  w-full md:hidden">
-                Fee Details:
-              </strong>
+          <div className="flex flex-row  items-center justify-between w-full ">
+            <strong className="text-[#F0C38E] text-left  w-full md:hidden">
+              Fee Details:
+            </strong>
+            <DropdownMenuTrigger asChild>
               <Button
                 variant="default"
-                className=" w-full text-[#221F39] bg-white/10  border-none justify-center  md:justify-between"
+                className=" w-fit md:w-full text-[#221F39] bg-white/10  border-none justify-center items-center  md:justify-between"
               >
                 <strong className="text-[#F0C38E] hidden md:block">
                   Fee Details
                 </strong>
                 <ChevronDown className="h-8 w-8  animate-bounce  text-[#F0C38E]" />
               </Button>
-            </div>
-          </DropdownMenuTrigger>
+            </DropdownMenuTrigger>
+          </div>
           <DropdownMenuContent
             align="end"
             className="w-[200px] bg-[#221F39] text-[#F0C38E] font-semibold"

@@ -21,10 +21,8 @@ export const CertificateModal = ({
 }: CertificateModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // Center the modal when it opens
   useEffect(() => {
     if (isOpen && modalRef.current) {
-      // Small delay to ensure DOM is ready
       setTimeout(() => {
         modalRef.current?.scrollIntoView({
           behavior: "smooth",

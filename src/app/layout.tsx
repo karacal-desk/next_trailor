@@ -20,9 +20,9 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "ASHAA-Tailoring Institute | Govt. Certified Dress Tailoring Course",
+  title: "Govt. Tailoring courses | ASHAA - Barasat, Kolkata",
   description:
-    "Join our government-certified dress design course and vocational tailoring certificate program. Get tailor jobs, sell your designs, and work from home with our affordable sewing courses.",
+    "Start earning during short term govt. tailoring course. Get diploma certificate and sell designed dress from New Barrackpur. Learn free sewing with Usha machine",
   keywords: [
     "Govt. certified dress design course",
     "Govt. certified tailoring institute school",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     "Sell old cloths",
   ].join(", "),
   openGraph: {
-    title: "ASHAA-Tailoring Institute | Govt. Certified Dress Design Course",
+    title: "Govt. Tailoring course | ASHAA - Barasat, Kolkata",
     description:
-      "Join our government-certified dress design course and vocational tailoring certificate program. Get tailor jobs, sell your designs, and work from home with our affordable sewing courses.",
+      "Start earning during short term govt. tailoring course. Get diploma certificate and sell designed dress from New Barrackpur. Learn free sewing with Usha machine",
     type: "website",
     locale: "en_US",
     url: "https://ashaafoundation.in",
@@ -61,7 +61,7 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className="antialiased flex flex-col min-h-screen">
+      <body className="antialiased flex flex-col ">
         <Navbar />
         <Background />
 

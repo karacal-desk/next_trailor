@@ -101,7 +101,7 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}
-                    className=" border-b  border-r border-[#9370DB] hover:text-[#9370DB] shadow-lg shadow-[#9370DB]/30 rounded-md   mt-1 h-14 w-14 relative"
+                    className=" border-b  border-r border-[#9370DB] hover:text-[#9370DB] shadow-lg shadow-[#9370DB]/50 rounded-md   mt-1 h-14 w-14 relative"
                   >
                     <Image
                       src="/icon.png"
